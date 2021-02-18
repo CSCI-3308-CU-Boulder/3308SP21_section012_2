@@ -2,8 +2,11 @@ import logo from './images/logo.svg';
 import styles from  './App.module.css';
 import React, { Component, useEffect, useState } from "react";
 import { spotifyLogo, clientId, redirectUri, hash, scopes, signUp, authEndpoint} from './utils/constants'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { NavigationBar } from './components/NavigationBar';
 
-
+// this shit isnt working and I dont know why.  it can't find what it needs
 
 // {!hash.access_token &&
 //     history.push('/')
