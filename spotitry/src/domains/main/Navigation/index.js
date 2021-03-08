@@ -15,7 +15,6 @@ const NavBar = () => {
                 className={styles.tabs}
                 value={tab}
                 onChange={(event,value)=>(
-                    console.log(event),
                     setTab(value),
                     history.push(tabs[value])
                 )}

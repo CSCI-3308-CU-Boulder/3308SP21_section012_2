@@ -13,6 +13,7 @@ export const scopes = [
     "playlist-modify-private",
     "playlist-read-private",
     "playlist-read-collaborative",
+    'user-read-email'
   ];
   
   // Get the hash of the url
@@ -28,4 +29,6 @@ export const hash = window.location.hash
 }, {});
 window.location.hash = "";
 
-export const API_ENDPOINT  = 'https://api.spotify.com'
+export const PROFILE_ENDPOINT  = 'https://api.spotify.com/v1/me'
+export const TOP_ARTISTS_ENDPOINT = 'https://api.spotify.com/v1/me/top/artists'
+export const TOP_TRACKS_ENDPOINT = 'https://api.spotify.com/v1/me/top/tracks'

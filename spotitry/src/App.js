@@ -10,12 +10,6 @@ const App = (props) => {
   const [isLoggedIn] = useState(hash.access_token)
   const history = useHistory()
   var domain = window.location.pathname
-  console.log(domain)
-
-  if(isLoggedIn){
-      props.storeToken(hash.access_token)
-  }
-
   if(isLoggedIn){
     return(
       <AuthenticatedApp/>
@@ -28,12 +22,6 @@ const App = (props) => {
   return <UnauthenticatedApp/>
 
 }
-
-const mapDispatchToProps = (dispatch) => {
-  return{
-      storeToken: (token) => dispatch(StoreToken(token))
-  }
-}
-export default connect(null,mapDispatchToProps)(App);
+export default (App);
 
 
