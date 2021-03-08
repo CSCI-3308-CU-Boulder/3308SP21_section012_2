@@ -1,6 +1,6 @@
 export const authEndpoint = 'https://accounts.spotify.com/authorize?';
 export const signUp = 'https://www.spotify.com/signup/'
-export const spotifyLogo = 'https://logos-world.net/wp-content/uploads/2020/09/Spotify-Symbol.png'
+export const spotifyLogo = 'https://1000logos.net/wp-content/uploads/2017/08/Spotify-Logo.png'
 export const clientId = "4604d772bd3e4fe69399830809371aa4";
 export const redirectUri ="http://localhost:3000/home"
 export const scopes = [
@@ -27,3 +27,5 @@ export const hash = window.location.hash
     return initial;
 }, {});
 window.location.hash = "";
+
+export const API_ENDPOINT  = 'https://api.spotify.com'

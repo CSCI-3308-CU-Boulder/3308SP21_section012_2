@@ -1,62 +1,39 @@
-import logo from './images/logo.svg';
-import styles from  './App.module.css';
-import React, { Component, useEffect, useState } from "react";
-import { spotifyLogo, clientId, redirectUri, hash, scopes, signUp, authEndpoint} from './utils/constants'
+import React, { useState } from "react";
+import {hash} from './utils/constants'
+import UnauthenticatedApp from './domains/login/unauthenticated-app'
+import AuthenticatedApp from './authenticated-app'
+import { StoreToken } from './domains/main/redux/actions'
+import { connect } from 'react-redux'
+import {useHistory } from "react-router-dom";
 
+const App = (props) => {
+  const [isLoggedIn] = useState(hash.access_token)
+  const history = useHistory()
+  var domain = window.location.pathname
+  console.log(domain)
 
+  if(isLoggedIn){
+      props.storeToken(hash.access_token)
+  }
 
-// {!hash.access_token &&
-//     history.push('/')
-//     return (
-//         <>
-//         {/* <p>Oops. Something went wrong. Please try again</p> */}
-//         <App errors={errors}/>
-//         </>
-//     )
-// }
+  if(isLoggedIn){
+    return(
+      <AuthenticatedApp/>
+    )
+  }
+  if(domain != '/'){
+    history.push('/')
+  }
 
+  return <UnauthenticatedApp/>
 
-
-
-
-
-
-const App = () => {
-  const [accessToken, setAccessToken] = useState()
-  useEffect(() => {
-    let _token = hash.access_token;
-    if (_token) {
-      // Set token
-      setAccessToken({
-        token: _token
-      });
-    }
-  },[hash.access_token])
-  return (
-    <div className={styles.App}>
-      <header className={styles.AppName}>SpotiTRY</header>
-      <header className={styles.AppHeader}>
-      <img src={spotifyLogo} className={styles.AppLogo} alt="Spotify Logo" />
-      {!accessToken && (
-        <a
-          className={styles.AppLink}
-          href={`${authEndpoint}client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`}>
-          Login
-        </a>
-        
-      )}
-      {!accessToken && (
-        <a
-          className={styles.AppLink}
-          href={`${signUp}`}
-        >
-          Sign Up
-        </a>
-      )}
-      </header>
-    </div>
-  );
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return{
+      storeToken: (token) => dispatch(StoreToken(token))
+  }
+}
+export default connect(null,mapDispatchToProps)(App);
+
 

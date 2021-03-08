@@ -1,13 +1,45 @@
-import React, { useState } from 'react'
-import styles from './index.module.css'
-import { useHistory } from 'react-router-dom';
-import { hash } from '../utils/constants'
-import App from '../App.js'
+import React from 'react';
+import { Switch, Route, Redirect} from 'react-router-dom';
+import Home from './domains/main/Home';
+import NavBar from './domains/main/Navigation';
+import Friends from './domains/main/Friends';
+import Account from './domains/main/Account';
 
-const authenticatedApp = () => {
+const AuthenticatedApp = () => {
+
     return(
-        <div className={styles.header}>You have been authenticated</div>
+      <>
+      <NavBar/>
+
+      <Switch>
+        <Route
+        exact
+        path="/"
+        render={() => {
+          return <Redirect to="/home" />;
+        }}
+        />
+        <Route
+          exact path='/home'
+          >
+          <Home/>
+        </Route>
+        <Route
+          exact path='/friends'
+          >
+          <Friends/>
+        </Route>
+        <Route
+          exact path='/account'
+          >
+          <Account/>
+        </Route>
+      </Switch>
+
+    </>
+
+
     )
 }
 
-export default authenticatedApp;
+export default AuthenticatedApp;
