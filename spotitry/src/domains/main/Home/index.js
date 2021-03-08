@@ -11,7 +11,8 @@ const Home = (props) => {
         console.log(token)
     },[])
     return(
-            <div className={styles.header}>This is Home Page</div>
+        
+        <div className={styles.header}>This is Home Page</div>
         
     )
 }
@@ -23,7 +24,8 @@ const mapDispatchToProps = (dispatch) => {
 }
 const mapStateToProps = (state) => {
     return {
-        token:state.User.token
+        token:state.User.token,
+        // topArtists: state.User.
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Home);
