@@ -5,8 +5,10 @@ const InitialState =
 {
     loading:false,
     profile:{},
+    databaseUser: {},
     token: '',
-    errors:[]
+    errors:[],
+    topArtists: []
 }
 
 export default function(state = InitialState, action){
@@ -83,6 +85,18 @@ export default function(state = InitialState, action){
                 ...state,
                 loading:false,
                 errors
+            }
+        }
+        case Actions.setDatabaseUserSucceeded: {
+            const {user} = action
+            return {
+                ...state,
+                databaseUser:user
+            }
+        }
+        case Actions.setDatabaseUserRequested: {
+            return {
+                ...state
             }
         }
         default:{

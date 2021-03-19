@@ -5,7 +5,9 @@ export const Actions  = {
     GET_PROFILE_Failed:'Get Profile Failed',
     GET_TOP_Requested:'Get Top Artists Requested',
     GET_TOP_Succeeded:'Get Top Artists Succeeded',
-    GET_TOP_Failed:'Get Top Artists Failed'
+    GET_TOP_Failed:'Get Top Artists Failed',
+    setDatabaseUserRequested: 'Set Database User Requested',
+    setDatabaseUserSucceeded: 'Set Database User Succeeded'
 }
 
 export function StoreToken(token){
@@ -70,5 +72,17 @@ export function getTopTracksFailed(errors){
     return{
         type: Actions.GET_TOP_Failed,
         errors
+    }
+}
+export function setDatabaseUserSucceeded(user){
+    return{
+        type: Actions.setDatabaseUserSucceeded,
+        user
+    }
+}
+export function setDatabaseUserRequested(data){
+    return{
+        type:Actions.setDatabaseUserRequested,
+        data
     }
 }

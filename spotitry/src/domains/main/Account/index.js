@@ -13,6 +13,7 @@ const Account = (props) => {
                 <img className={styles.profilePic} src={profile?.images[0]?.url} ></img>
                 <div>
                     <div className={styles.name} >{`${profile?.display_name}`}</div>
+                    <div className={styles.email}>Email: {profile?.email}</div>
                     <div className={styles.followers}>Followers: {profile.followers.total}</div>
                 </div>
             </div>
