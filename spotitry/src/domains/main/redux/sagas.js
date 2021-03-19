@@ -2,6 +2,7 @@ import { all, takeLatest, call, put } from 'redux-saga/effects';
 import * as Actions from './actions'
 import axios from 'axios'
 import { PROFILE_ENDPOINT, TOP_ARTISTS_ENDPOINT} from '../../../utils/constants'
+import { authentication, createAndFetchUser, fetchUser} from '../../../firebase.js'
 import { getProfileSucceeded } from './actions'
 
 export function* getProfile(action) {
@@ -18,6 +19,7 @@ export function* getProfile(action) {
         if(response){
             console.log(response)
             yield put(Actions.getProfileSucceeded(response.data))
+            yield put (Actions.setDatabaseUserRequested(response.data))
         }
         else {
             yield put (Actions.getProfileFailed('Could not get profile'))
@@ -28,6 +30,17 @@ export function* getProfile(action) {
         yield put (Actions.getProfileFailed(error))
     }
 }
+
+//After Spotify authenticates, pull the data from firebase or create a new user
+export function* setDatabaseUser({data}) {    const {email,id,display_name} = data
+    const user = yield fetchUser(id)
+    if(!user){
+        yield call(createAndFetchUser(id,display_name,email))
+    }
+    yield put(Actions.setDatabaseUserSucceeded(user))
+
+}
+
 export function* getTopArtists(action) {
     const {token} = action
     try {
@@ -35,7 +48,7 @@ export function* getTopArtists(action) {
             { headers: {'Authorization': 'Bearer ' + token }})
 
         if(response) {
-            console.log(response)
+            console.log(response.data)
             yield put(Actions.getTopArtistsSucceeded(response.data))
         }
         else {
@@ -70,6 +83,9 @@ export function* getTopTracks(token) {
 export default function* () {
     yield all([
         yield takeLatest(Actions.Actions.STORE_TOKEN, getProfile),
-        yield takeLatest((action) => action.type === Actions.Actions.GET_TOP_Requested, getTopArtists)
+        yield takeLatest(Actions.Actions.GET_TOP_Requested, getTopArtists),
+        yield takeLatest(Actions.Actions.setDatabaseUserRequested, setDatabaseUser)
+
+
     ]);
 }
