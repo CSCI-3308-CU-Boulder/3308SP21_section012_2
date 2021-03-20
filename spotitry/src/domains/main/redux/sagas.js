@@ -48,7 +48,6 @@ export function* getTopArtists(action) {
             { headers: {'Authorization': 'Bearer ' + token }})
 
         if(response) {
-            console.log(response.data)
             yield put(Actions.getTopArtistsSucceeded(response.data))
         }
         else {
