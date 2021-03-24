@@ -33,9 +33,9 @@ const AuthenticatedApp = (props) => {
           <Home/>
         </Route>
         <Route
-          exact path='/friends'
+          exact path='/timestamps'
           >
-          <Friends/>
+          <Timestamps/>
         </Route>
         <Route
           exact path='/account'

@@ -22,7 +22,7 @@ const NavBar = () => {
                 centered
             >
                 <Tab  label="Home" />
-                <Tab label="Friends"/>
+                <Tab label="Timestamps"/>
                 <Tab label="Account"/>
             </Tabs>
         </Paper>
