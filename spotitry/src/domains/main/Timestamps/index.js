@@ -1,15 +1,28 @@
 import React, {useState, Component } from 'react'
 import styles from '../Timestamps/index.module.css'
 import { connect } from 'react-redux'
-import { Table } from 'reactstrap'
+import {Table, InputGroup, InputGroupAddon, InputGroupText, Input, Button } from 'reactstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
-const Timestamps = () => {
-    const {token} = props
+const Timestamps = (props) => {
+    var {token} = props
     console.log(token)
 
     return(
-        <div className={styles.header}> Timestamps
+            
+        <div>
+            <div>
+                <InputGroup style={{width: '50%'}}>
+                    <InputGroupAddon addonType="append">
+                        <Button>
+                            <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
+                        </Button>
+                    </InputGroupAddon>
+                    <Input placeholder = "Search"></Input>
+                </InputGroup>
+            </div>
 
             <Table dark>
 

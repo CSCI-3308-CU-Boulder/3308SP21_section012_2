@@ -7,7 +7,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const Home = (props) => {
-    const {token, getTopArtists, getTopTracks} = props
+    var {token, getTopArtists, getTopTracks} = props
+
     console.log(token)
     useEffect(() => {
         getTopArtists(token)
