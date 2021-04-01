@@ -3,7 +3,7 @@ import {hash} from './utils/constants'
 import { Switch, Route, Redirect} from 'react-router-dom';
 import Home from './domains/main/Home';
 import NavBar from './domains/main/Navigation';
-import Friends from './domains/main/Friends';
+import Timestamps from './domains/main/Timestamps';
 import Account from './domains/main/Account';
 import { StoreToken } from './domains/main/redux/actions'
 import { connect } from 'react-redux'
