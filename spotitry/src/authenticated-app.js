@@ -3,7 +3,7 @@ import {hash} from './utils/constants'
 import { Switch, Route, Redirect} from 'react-router-dom';
 import Home from './domains/main/Home';
 import NavBar from './components/NavBar';
-import Friends from './domains/main/Friends';
+import Timestamps from './domains/main/Timestamps';
 import Account from './domains/main/Account';
 import Discover from './domains/main/Discover'
 import { StoreToken } from './domains/main/redux/Actions/UserActions.js'
@@ -33,9 +33,9 @@ const AuthenticatedApp = (props) => {
           <Home/>
         </Route>
         <Route
-          exact path='/friends'
-        >
-          <Friends/>
+          exact path='/timestamps'
+          >
+          <Timestamps/>
         </Route>
         <Route
           exact path='/account'

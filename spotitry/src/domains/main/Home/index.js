@@ -1,91 +1,107 @@
 import React, { useEffect, useState } from 'react'
 import styles from './index.module.css'
-import { getTopArtistsRequested, getTopTracksRequested } from '../redux/Actions/UserActions.js'
+import { playSongRequested } from '../redux/Actions/PlaybackActions.js'
 import { connect } from 'react-redux'
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import { Table, Card, CardImg, CardBody, CardTitle, CardHeader, CardSubtitle } from 'reactstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-const useStyles = makeStyles({
-    root: {
-      minWidth: 275,
-        color:'green',
-      backgroundColor: '#282c34',
-      width:20,
-      borderRadius:10,
-    },
-    bullet: {
-      display: 'inline-block',
-      margin: '0 2px',
-      transform: 'scale(0.8)',
-    },
-    title: {
-      fontSize: 14,
-    },
-    pos: {
-      marginBottom: 12,
-    },
-  });
-  
-  const  SimpleCard = () => {
-    const classes = useStyles();
-    const bull = <span className={classes.bullet}>•</span>;
-  
-    return (
-      <Card className={classes.root}>
-        <CardContent>
-          <Typography className={classes.title} color="textSecondary" gutterBottom>
-            Word of the Day
-          </Typography>
-          <Typography variant="h5" component="h2">
-            be{bull}nev{bull}o{bull}lent
-          </Typography>
-          <Typography className={classes.pos} color="textSecondary">
-            adjective
-          </Typography>
-          <Typography variant="body2" component="p">
-            well meaning and kindly.
-            <br />
-            {'"a benevolent smile"'}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small">Learn More</Button>
-        </CardActions>
-      </Card>
-    );
-  }
 
 const Home = (props) => {
-    const {token, getTopArtists, getTopTracks} = props
+    var {token, getTopArtists, getTopTracks, topTracks,topArtists,playSong} = props
+
+    console.log(token)
     useEffect(() => {
         // getTopArtists(token)
         // console.log(token)
     },[])
+    console.log(topTracks)
     return(
-        <>
-        <div className={styles.header}>This is Home Page</div>
-        {/* <SimpleCard/> */}
-        </>
+        // <>
+        // <div className={styles.header}>This is Home Page</div>
+        // </>
+
+        <div className={styles.container}>
+            <div class="card d-flex justify-content-center">
+                <div class="card-body">
+                    <h4 class="card-title">Username's Top Songs</h4>
+                </div>
+            </div>
+            <Table dark>
+            <thead><tr><th>#</th></tr></thead>
+                <tbody>
+                {topTracks.slice(0,10)?.map((track,key) => {
+                    return(
+                        <tr>
+                            <th scope="row">{key+1}</th>
+                            <td colSpan="1">
+                                <div 
+                                    className={styles.table}                                        
+                                    onClick={() => {
+                                        playSong(token,0,track?.uri,track,'play');      
+                                    }}
+                                >
+                                    <Card >
+                                        <CardImg top width="100%" src="" alt="Album Cover" style={{width:'200px',}} src={track.album.images[0].url}/>
+                                        <CardHeader>
+                                            <CardTitle tag="h5">{track.name}</CardTitle>
+                                        </CardHeader>
+                                        <CardBody>
+                                            <CardSubtitle tag="h6" className="mb-2 text-muted">{track.artists[0].name}</CardSubtitle>
+                                            <CardSubtitle tag="h6" className="mb-2 text-muted">{track.album.name}</CardSubtitle>
+                                        </CardBody>
+                                    </Card>
+                                </div>
+                            </td>
+                        </tr>
+                    )
+                })}
+                </tbody>
+            </Table>
+            <div class="card d-flex ">
+                <div class="card-body">
+                    <h4 class="card-title">Username's Top Artists</h4>
+                </div>
+            </div>
+            <Table dark>
+            <thead><tr><th>#</th><th>Artist</th></tr></thead>
+                <tbody>
+                {topArtists.slice(0,10)?.map((artist,key) => {
+                    return(
+                        <tr>
+                            <th scope="row">{key+1}</th>
+                            <td>
+                                <div className={styles.table}>
+                                <Card>
+                                    <CardImg top width="100%" alt="Artist Pic" style={{width:'200px'}} src={artist.images[0].url}/>
+                                    <CardHeader>
+                                        <CardTitle tag="h5">{artist.name}</CardTitle>
+                                    </CardHeader>
+                                </Card>
+                                </div>
+                            </td>
+                        </tr> 
+                    )
+                })}             
+                </tbody>
+            </Table>
+        </div>
         
     )
 }
 
-// const WrappedApp = withStyles(styles)(App);
 const mapDispatchToProps = (dispatch) => {
     return {
-        getTopArtists: (token) => dispatch(getTopArtistsRequested(token)),
-        getTopTracks: (token) => dispatch(getTopTracksRequested)
+        // getTopArtists: (token) => dispatch(getTopArtistsRequested(token)),
+        // getTopTracks: (token) => dispatch(getTopTracksRequested)
+        playSong: (token, deviceId, songURI, song) => dispatch(playSongRequested(token, deviceId, songURI,song))
     }
 }
 const mapStateToProps = (state) => {
     return {
         token:state.User.token,
-        // topArtists: state.User.
+        topTracks:state.User.topTracks,
+        topArtists: state.User.topArtists,
+
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Home);
