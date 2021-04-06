@@ -1,8 +1,7 @@
 import React, {useState, Component } from 'react'
 import styles from '../Timestamps/index.module.css'
 import { connect } from 'react-redux'
-import {Table, InputGroup, InputGroupAddon, InputGroupText, Input, Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button, Row, Col } from 'reactstrap'
+import {Table, InputGroup, InputGroupAddon, InputGroupText, Input, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Row, Col } from 'reactstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
@@ -92,7 +91,6 @@ const Timestamps = (props) => {
                             </CardBody>
                         </Card>
                     </Col>
-
                     <Col sm="4">
                         <Card>
                             <CardImg top width="100%" src="" alt="Album Cover" />
