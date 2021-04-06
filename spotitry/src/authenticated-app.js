@@ -2,10 +2,11 @@ import React, { useEffect } from 'react';
 import {hash} from './utils/constants'
 import { Switch, Route, Redirect} from 'react-router-dom';
 import Home from './domains/main/Home';
-import NavBar from './domains/main/Navigation';
+import NavBar from './components/NavBar';
 import Friends from './domains/main/Friends';
 import Account from './domains/main/Account';
-import { StoreToken } from './domains/main/redux/actions'
+import Discover from './domains/main/Discover'
+import { StoreToken } from './domains/main/redux/Actions/UserActions.js'
 import { connect } from 'react-redux'
 
 const AuthenticatedApp = (props) => {
@@ -18,35 +19,36 @@ const AuthenticatedApp = (props) => {
     return(
       <>
       <NavBar/>
-
       <Switch>
         <Route
-        exact
-        path="/"
-        render={() => {
-          return <Redirect to="/home" />;
-        }}
+          exact
+          path="/"
+          render={() => {
+            return <Redirect to="/home" />;
+          }}
         />
         <Route
           exact path='/home'
-          >
+        >
           <Home/>
         </Route>
         <Route
           exact path='/friends'
-          >
+        >
           <Friends/>
         </Route>
         <Route
           exact path='/account'
-          >
+        >
           <Account/>
         </Route>
+        <Route
+          exact path='/discover'
+        >
+          <Discover/>
+        </Route>
       </Switch>
-
     </>
-
-
     )
 }
 const mapDispatchToProps = (dispatch) => {

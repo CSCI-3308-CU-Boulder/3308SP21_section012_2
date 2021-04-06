@@ -25,10 +25,24 @@ export async function createAndFetchUser(userId,name,email){
         return snapshot.val()
       }
       else{
-        return false
+        return null
       }
     }
     catch(error){
       console.log(error)
     }
-}
+  }
+
+export async function saveTimestamp(userId,song,progress_ms){
+
+  try{
+      const ref = db.ref('users/' + userId + '/timestamps')
+      await ref.push({
+        position_ms:progress_ms,
+        song:song
+      });
+  }
+  catch(error){
+    console.log(error)
+  }
+  }

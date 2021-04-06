@@ -1,33 +1,35 @@
-import { Actions } from './actions'
+import { UserDataActions } from '../Actions/UserActions.js'
 
 
 const InitialState = 
 {
-    loading:false,
     profile:{},
     databaseUser: {},
+    topArtists: [],
+    topTracks: [],
+    searchedSongs: [],
     token: '',
+    loading:false,
     errors:[],
-    topArtists: []
 }
 
 export default function(state = InitialState, action){
     const {type} = action
     switch(type){
-        case Actions.STORE_TOKEN :{
+        case UserDataActions.STORE_TOKEN :{
             const {token} = action 
             return {
                 ...state,
                 token
             }
         }
-        case Actions.GET_PROFILE_Requested: {
+        case UserDataActions.GET_PROFILE_Requested: {
             return {
                 ...state,
                 loading: true
             }
         }
-        case Actions.GET_PROFILE_Succeeded: {
+        case UserDataActions.GET_PROFILE_Succeeded: {
             const {profile} = action
             return {
                 ...state,
@@ -35,7 +37,7 @@ export default function(state = InitialState, action){
                 profile:profile
             }
         }
-        case Actions.GET_PROFILE_Failed: {
+        case UserDataActions.GET_PROFILE_Failed: {
             const {errors} = action
             return {
                 ...state,
@@ -43,21 +45,21 @@ export default function(state = InitialState, action){
                 errors
             }
         }
-        case Actions.GET_TOP_ARTISTS_Requested: {
+        case UserDataActions.GET_TOP_ARTISTS_Requested: {
             return {
                 ...state,
                 loading:true
             }
         }
-        case Actions.GET_TOP_ARTISTS_Succeeded: {
-            const {topArtists} = action
+        case UserDataActions.GET_TOP_ARTISTS_Succeeded: {
+            const { topArtists } = action
             return {
                 ...state,
                 loading:false,
-                topArtists
+                topArtists:topArtists
             }
         }
-        case Actions.GET_TOP_ARTISTS_Failed: {
+        case UserDataActions.GET_TOP_ARTISTS_Failed: {
             const { errors } = action 
             return {
                 ...state,
@@ -65,21 +67,21 @@ export default function(state = InitialState, action){
                 errors
             }
         }
-        case Actions.GET_TOP_TRACKS_Requested: {
+        case UserDataActions.GET_TOP_TRACKS_Requested: {
             return {
                 ...state,
                 loading:true
             }
         }
-        case Actions.GET_TOP_TRACKS_Succeeded: {
+        case UserDataActions.GET_TOP_TRACKS_Succeeded: {
             const {topTracks} = action
             return {
                 ...state,
                 loading:false,
-                topTracks
+                topTracks:topTracks
             }
         }
-        case Actions.GET_TOP_TRACKS_Failed: {
+        case UserDataActions.GET_TOP_TRACKS_Failed: {
             const { errors } = action 
             return {
                 ...state,
@@ -87,16 +89,42 @@ export default function(state = InitialState, action){
                 errors
             }
         }
-        case Actions.setDatabaseUserSucceeded: {
+        case UserDataActions.setDatabaseUserSucceeded: {
             const {user} = action
             return {
                 ...state,
                 databaseUser:user
             }
         }
-        case Actions.setDatabaseUserRequested: {
+        case UserDataActions.setDatabaseUserRequested: {
             return {
                 ...state
+            }
+        }
+        case UserDataActions.setDatabaseUserFailed: {
+            const { errors } = action 
+            return {
+                ...state,
+                errors
+            }
+        }
+        case UserDataActions.searchSongsRequested: {
+            return {
+                ...state,
+            }
+        }
+        case UserDataActions.searchSongsSucceeded: {
+            const { searchedSongs } = action
+            return {
+                ...state,
+                searchedSongs
+            }
+        }
+        case UserDataActions.searchSongsFailed: {
+            const { errors } = action 
+            return {
+                ...state,
+                errors
             }
         }
         default:{

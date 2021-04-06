@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from './index.module.css'
-import { getTopArtistsRequested, getTopTracksRequested } from '../redux/actions'
+import { getTopArtistsRequested, getTopTracksRequested } from '../redux/Actions/UserActions.js'
 import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -8,7 +8,6 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { green } from '@material-ui/core/colors';
 
 
 const useStyles = makeStyles({
@@ -62,16 +61,15 @@ const useStyles = makeStyles({
   }
 
 const Home = (props) => {
-    const {token, getTopArtists, getTopTracks,classes} = props
-    console.log(token)
+    const {token, getTopArtists, getTopTracks} = props
     useEffect(() => {
-        getTopArtists(token)
-        console.log(token)
+        // getTopArtists(token)
+        // console.log(token)
     },[])
     return(
         <>
-        {/* <div className={styles.header}>This is Home Page</div> */}
-        <SimpleCard/>
+        <div className={styles.header}>This is Home Page</div>
+        {/* <SimpleCard/> */}
         </>
         
     )
