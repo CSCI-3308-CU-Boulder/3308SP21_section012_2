@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b93bf3a1-21d3-4f75-b808-5660dea71b43" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Team_Meeting_Logs/MeetingLogs" beforeDir="false" afterPath="$PROJECT_DIR$/Team_Meeting_Logs/MeetingLogs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1qfqjNi04xt3q6mSthOdWaOrzu0" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b93bf3a1-21d3-4f75-b808-5660dea71b43" name="Default Changelist" comment="" />
+      <created>1617481127266</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1617481127266</updated>
+      <workItem from="1617481129030" duration="984000" />
+      <workItem from="1617732439838" duration="250000" />
+      <workItem from="1617732850526" duration="183000" />
+      <workItem from="1618018744610" duration="201000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1009" y="23" width="783" height="1078" key="dock-window-1" timestamp="1617481675778">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state x="1009" y="23" width="783" height="1078" key="dock-window-1/0.23.1792.1097@0.23.1792.1097" timestamp="1617481675778" />
+  </component>
+</project>
