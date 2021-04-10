@@ -1,0 +1,58 @@
+.header {
+    background-color: #282c34;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    font-size: calc(10px + 2vmin);
+    color:  #1DB954;
+    margin: 100px;
+    min-height: 86vh;
+    overflow:scroll;
+    max-height: 86vh;
+    margin-bottom: 0px;
+}
+.pic{
+    width: 250px;
+}
+.column{
+    display: flex;
+    justify-content: left;
+}
+.row{
+    flex-direction: row;
+    display: flex;
+    /* align-self: flex-start; */
+}
+.smallPic{
+    width: 75px;
+    height: 75px;
+    border-radius: 70px;
+}
+.row1 {
+    flex-direction: row;
+    display: flex;
+    min-height: 88.2vh;
+    color:  #1DB954;
+    background-color: #282c34;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.timestamp{
+    margin-top: 100px;
+    height: 200px;
+    margin-right: 500px;
+    background-color: #282c34;
+    background-color: #282c34;
+}
+.timestampButton {
+    height: 100px;
+    background-color: #1DB954;
+    color: #282c34;
+    
+}
+.timestampButton:hover{
+    background-color: black;
+    color:#1DB954;
+}

@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 const NavBar = () => {
     const [tab,setTab] = useState(0);
     const history = useHistory()
-    const tabs = ['home','timestamps','account']
+    const tabs = ['home','timestamps','discover','account']
     return(
         <>
         <Paper>
@@ -23,6 +23,7 @@ const NavBar = () => {
             >
                 <Tab  label="Home" />
                 <Tab label="Timestamps"/>
+                <Tab label="Discover"/>
                 <Tab label="Account"/>
             </Tabs>
         </Paper>
