@@ -1,6 +1,21 @@
+//Firebase
 import firebase from 'firebase/app'
 import "firebase/auth";
 import "firebase/database";
+
+var firebaseConfig = {
+  apiKey: "AIzaSyDaeiVFGwFlPRRv-PmJGPfR5uy0Mq6sI4E",
+  authDomain: "spotitry-4ca96.firebaseapp.com",
+  databaseURL: "https://spotitry-4ca96-default-rtdb.firebaseio.com",
+  projectId: "spotitry-4ca96",
+  storageBucket: "spotitry-4ca96.appspot.com",
+  messagingSenderId: "114096662793",
+  appId: "1:114096662793:web:98352476fe4fddd00ccbd8",
+  measurementId: "G-K4DMSYDJ8B"
+};
+firebase.initializeApp(firebaseConfig);
+export const db = firebase.database();
+export const auth = firebase.auth();
 
 //Spotify API 
 export const authEndpoint = 'https://accounts.spotify.com/authorize?';
@@ -18,10 +33,17 @@ export const scopes = [
     "playlist-modify-private",
     "playlist-read-private",
     "playlist-read-collaborative",
-    'user-read-email'
+    'user-read-email',
+    'user-modify-playback-state'
   ];
-  
-  // Get the hash of the url
+
+export const PROFILE_ENDPOINT  = 'https://api.spotify.com/v1/me'
+export const TOP_ARTISTS_ENDPOINT = 'https://api.spotify.com/v1/me/top/artists'
+export const TOP_TRACKS_ENDPOINT = 'https://api.spotify.com/v1/me/top/tracks'
+export const SEARCH_ENDPOINT = 'https://api.spotify.com/v1/search'
+export const PLAYER_ENDPOINT = 'https://api.spotify.com/v1/me/player'
+
+// Get the hash of the url
 export const hash = window.location.hash
 .substring(1)
 .split("&")
@@ -33,33 +55,3 @@ export const hash = window.location.hash
     return initial;
 }, {});
 window.location.hash = "";
-
-export const PROFILE_ENDPOINT  = 'https://api.spotify.com/v1/me'
-export const TOP_ARTISTS_ENDPOINT = 'https://api.spotify.com/v1/me/top/artists'
-export const TOP_TRACKS_ENDPOINT = 'https://api.spotify.com/v1/me/top/tracks'
-
-//Firebase
-// export const firebaseConfig = {
-//   projectId: "spotitry-4ca96",
-//   apiKey: "AIzaSyDaeiVFGwFlPRRv-PmJGPfR5uy0Mq6sI4E",
-//   authDomain: "spotitry-4ca96.firebaseapp.com",
-//   databaseURL: 'https://spotitry-4ca96-default-rtdb.firebaseio.com/',
-//   storageBucket: "spotitry-4ca96.appspot.com",
-//   messagingSenderId: "114096662793",
-//   appId: "1:114096662793:web:98352476fe4fddd00ccbd8",
-//   measurementId: "G-K4DMSYDJ8B",
-// };
-
-  var firebaseConfig = {
-    apiKey: "AIzaSyDaeiVFGwFlPRRv-PmJGPfR5uy0Mq6sI4E",
-    authDomain: "spotitry-4ca96.firebaseapp.com",
-    databaseURL: "https://spotitry-4ca96-default-rtdb.firebaseio.com",
-    projectId: "spotitry-4ca96",
-    storageBucket: "spotitry-4ca96.appspot.com",
-    messagingSenderId: "114096662793",
-    appId: "1:114096662793:web:98352476fe4fddd00ccbd8",
-    measurementId: "G-K4DMSYDJ8B"
-  };
-firebase.initializeApp(firebaseConfig);
-export const db = firebase.database();
-export const auth = firebase.auth();

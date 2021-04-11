@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {hash} from './utils/constants'
 import UnauthenticatedApp from './domains/login/unauthenticated-app'
 import AuthenticatedApp from './authenticated-app'
-import { StoreToken } from './domains/main/redux/actions'
+import { StoreToken } from './domains/main/redux/Actions/UserActions.js'
 import { connect } from 'react-redux'
 import {useHistory } from "react-router-dom";
 
