@@ -5,12 +5,8 @@ import Home from './domains/main/Home';
 import NavBar from './components/NavBar';
 import Timestamps from './domains/main/Timestamps';
 import Account from './domains/main/Account';
-<<<<<<< HEAD
-import Discover from './domains/main/Discover'
-=======
 import Discover from './domains/main/Discover';
 import History from './domains/main/History';
->>>>>>> KyraBranch
 import { StoreToken } from './domains/main/redux/Actions/UserActions.js'
 import { connect } from 'react-redux'
 
@@ -52,14 +48,11 @@ const AuthenticatedApp = (props) => {
         >
           <Discover/>
         </Route>
-<<<<<<< HEAD
-=======
         <Route
           exact path='/history'
         >
           <History/>
         </Route>
->>>>>>> KyraBranch
       </Switch>
     </>
     )
