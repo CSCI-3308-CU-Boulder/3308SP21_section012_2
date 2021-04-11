@@ -1,8 +1,11 @@
 import React, {useState, Component, useEffect } from 'react'
 import styles from '../Timestamps/index.module.css'
 import { connect } from 'react-redux'
+<<<<<<< HEAD
 import { getProfileRequested } from '../redux/Actions/UserActions'
 import { playSongRequested } from '../redux/Actions/PlaybackActions'
+=======
+>>>>>>> 6272bbd3fc50c47168db3aef1c70f7b70af5425a
 import {Table, InputGroup, InputGroupAddon, InputGroupText, Input, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Row, Col } from 'reactstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
