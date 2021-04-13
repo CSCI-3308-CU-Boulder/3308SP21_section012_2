@@ -32,112 +32,17 @@ const History = (props) => {
               </InputGroup>
           </div>
           <div>
-              {/* {imestamps?.map((timestamp) => { */}
-                  {/* console.log(timestamp) */}
-                  {/* return ( */}
-                      <div className={styles.container}>
-                          <Card>
-                              <CardImg top width="100%" src="" alt="Album Cover" />
-                              <CardBody>
-                                  <CardTitle tag="h5">{}</CardTitle>
-                                  <CardSubtitle tag="h6" className="mb-2 text-muted">Artist Name</CardSubtitle>
-                                  <CardSubtitle tag="h6" className="mb-2 text-muted">Album Name</CardSubtitle>
-                              </CardBody>
-                          </Card>
-                      </div>
-
-                  {/* ) */}
-              {/* }) */}
-
-              {/* } */}
+            <div className={styles.container}>
+                <Card>
+                    <CardImg top width="100%" src="" alt="Album Cover" />
+                    <CardBody>
+                        <CardTitle tag="h5">{}</CardTitle>
+                        <CardSubtitle tag="h6" className="mb-2 text-muted">Artist Name</CardSubtitle>
+                        <CardSubtitle tag="h6" className="mb-2 text-muted">Album Name</CardSubtitle>
+                    </CardBody>
+                </Card>
+            </div>
           <br></br>
-
-          {/* <div>
-              <Row>
-                  <Col sm="4">
-                      <Card>
-                          <CardImg top width="100%" src="" alt="Album Cover" />
-                          <CardBody>
-                          <CardTitle tag="h5">Song/Podcast title 1</CardTitle>
-                          <CardSubtitle tag="h6" className="mb-2 text-muted">Artist Name</CardSubtitle>
-                          <CardSubtitle tag="h6" className="mb-2 text-muted">Album Name</CardSubtitle>
-                          <CardText>Timestamps:</CardText>
-                          <Button>Timestamp #1</Button>
-                          </CardBody>
-                      </Card>
-                  </Col>
-
-                  <Col sm="4">
-                      <Card>
-                          <CardImg top width="100%" src="" alt="Album Cover" />
-                          <CardBody>
-                          <CardTitle tag="h5">Song/Podcast title 2</CardTitle>
-                          <CardSubtitle tag="h6" className="mb-2 text-muted">Artist Name</CardSubtitle>
-                          <CardSubtitle tag="h6" className="mb-2 text-muted">Album Name</CardSubtitle>
-
-                          <CardText>Timestamps:</CardText>
-                          <Button>Timestamp #1</Button>
-                          </CardBody>
-                      </Card>
-                  </Col>
-      
-                  <Col sm="4">
-                      <Card>
-                          <CardImg top width="100%" src="" alt="Album Cover" />
-                          <CardBody>
-                          <CardTitle tag="h5">Song/Podcast title 3</CardTitle>
-                          <CardSubtitle tag="h6" className="mb-2 text-muted">Artist Name</CardSubtitle>
-                          <CardSubtitle tag="h6" className="mb-2 text-muted">Album Name</CardSubtitle>
-
-                          <CardText>Timestamps:</CardText>
-                          <Button>Timestamp #1</Button>
-                          </CardBody>
-                      </Card>
-                  </Col>
-              </Row>
-              
-              <br></br>
-
-              <Row>
-                  <Col sm="4">
-                      <Card>
-                          <CardImg top width="100%" src="" alt="Album Cover" />
-                          <CardBody>
-                          <CardTitle tag="h5">Song/Podcast title 4</CardTitle>
-                          <CardSubtitle tag="h6" className="mb-2 text-muted">Artist Name</CardSubtitle>
-                          <CardSubtitle tag="h6" className="mb-2 text-muted">Album Name</CardSubtitle>
-                          <CardText>Timestamps:</CardText>
-                          <Button>Timestamp #1</Button>
-                          </CardBody>
-                      </Card>
-                  </Col>
-                  <Col sm="4">
-                      <Card>
-                          <CardImg top width="100%" src="" alt="Album Cover" />
-                          <CardBody>
-                          <CardTitle tag="h5">Song/Podcast title 5</CardTitle>
-                          <CardSubtitle tag="h6" className="mb-2 text-muted">Artist Name</CardSubtitle>
-                          <CardSubtitle tag="h6" className="mb-2 text-muted">Album Name</CardSubtitle>
-                          <CardText>Timestamps:</CardText>
-                          <Button>Timestamp #1</Button>
-                          </CardBody>
-                      </Card>
-                  </Col>
-
-                  <Col sm="4">
-                      <Card>
-                          <CardImg top width="100%" src="" alt="Album Cover" />
-                          <CardBody>
-                          <CardTitle tag="h5">Song/Podcast title 6</CardTitle>
-                          <CardSubtitle tag="h6" className="mb-2 text-muted">Artist Name</CardSubtitle>
-                          <CardSubtitle tag="h6" className="mb-2 text-muted">Album Name</CardSubtitle>
-                          <CardText>Timestamps:</CardText>
-                          <Button>Timestamp #1</Button>
-                          </CardBody>
-                      </Card>
-                  </Col>
-              </Row>
-          </div> */}
       </div>
   </div>
 

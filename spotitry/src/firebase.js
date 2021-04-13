@@ -45,3 +45,13 @@ export async function saveTimestamp(userId,song,progress_ms){
     console.log(error)
   }
 }
+export async function getTimestamps(userId){
+  try{
+    let snapshot = await db.ref('users/' + userId + '/timestamps').get();
+    const data = snapshot.exists();
+    console.log(data)
+  }
+  catch(error){
+    console.log(error)
+  }
+}
