@@ -9,7 +9,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Home = (props) => {
     var {token, getTopArtists, getTopTracks, topTracks,topArtists,playSong} = props
 
-    console.log(token)
     useEffect(() => {
         // getTopArtists(token)
         // console.log(token)
@@ -23,7 +22,7 @@ const Home = (props) => {
         <div className={styles.container}>
             <div class="card d-flex justify-content-center">
                 <div class="card-body">
-                    <h4 class="card-title">Username's Top Songs</h4>
+                    <h4 class="card-title">Your Top Songs</h4>
                 </div>
             </div>
             <Table dark>
@@ -37,7 +36,7 @@ const Home = (props) => {
                                 <div 
                                     className={styles.table}                                        
                                     onClick={() => {
-                                        playSong(token,0,track?.uri,track,'play');      
+                                        playSong(token,0,track?.uri,track);      
                                     }}
                                 >
                                     <Card >
@@ -91,8 +90,6 @@ const Home = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        // getTopArtists: (token) => dispatch(getTopArtistsRequested(token)),
-        // getTopTracks: (token) => dispatch(getTopTracksRequested)
         playSong: (token, deviceId, songURI, song) => dispatch(playSongRequested(token, deviceId, songURI,song))
     }
 }

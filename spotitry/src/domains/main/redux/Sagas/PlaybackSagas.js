@@ -39,10 +39,10 @@ export function* getPlaybackInfo({ token, createTimestamp, userId}) {
     }
 }
 
-export function* playSong({token, deviceId, songURI, song, action}){
-
+export function* playSong({token, position_ms, songURI, song}){
     try{
-        yield call(axios.put, `${PLAYER_ENDPOINT}/play`,{uris: [songURI], position_ms:''},{headers:{'Authorization': 'Bearer ' + token}})
+        console.log(position_ms)
+        yield call(axios.put, `${PLAYER_ENDPOINT}/play`,{uris: [songURI], position_ms: position_ms},{headers:{'Authorization': 'Bearer ' + token}})
         yield put(Actions.playSongSucceeded())
         yield put(Actions.setPlaybackInfo(song))
     }
