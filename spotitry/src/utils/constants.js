@@ -56,3 +56,10 @@ export const hash = window.location.hash
     return initial;
 }, {});
 window.location.hash = "";
+
+
+
+export function parseSpecialCharacters(string){
+    var newString = string.replace(/[^a-zA-Z0-9]/g, '')
+    return(newString)
+}
