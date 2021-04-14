@@ -43,6 +43,7 @@ export const TOP_ARTISTS_ENDPOINT = 'https://api.spotify.com/v1/me/top/artists'
 export const TOP_TRACKS_ENDPOINT = 'https://api.spotify.com/v1/me/top/tracks'
 export const SEARCH_ENDPOINT = 'https://api.spotify.com/v1/search'
 export const PLAYER_ENDPOINT = 'https://api.spotify.com/v1/me/player'
+// export const HISTORY_ENDPOINT = 'https://api.spotify.com/v1/me/'
 
 // Get the hash of the url
 export const hash = window.location.hash

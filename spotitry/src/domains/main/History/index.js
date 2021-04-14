@@ -3,63 +3,87 @@ import styles from '../History/index.module.css'
 import { connect } from 'react-redux'
 import { getProfileRequested } from '../redux/Actions/UserActions'
 import { playSongRequested } from '../redux/Actions/PlaybackActions'
-import {Table, InputGroup, InputGroupAddon, InputGroupText, Input, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Row, Col } from 'reactstrap'
+import {Table, InputGroup, InputGroupAddon, InputGroupText, Input, Button, Row, Col } from 'reactstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import DisplayCard from '../../../components/DisplayCard';
 
 const History = (props) => {
-  const {token, timestamps, refetchUser,playSong} = props
-  console.log(token)
-
-  // useEffect(() => {
-  //     refetchUser(token)
-  // },[])
-  // var arrTimestamps = Object.values(timestamps)
-  // console.log(arrTimestamps)
-  
-  return(
-  
-      <div className={styles.container}>     
-          <div>
-              <InputGroup style={{width: '50%'}}>
-                  <InputGroupAddon addonType="append">
-                      <Button>
-                          <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
-                      </Button>
-                  </InputGroupAddon>
-                  <Input placeholder = "Search"></Input>
-              </InputGroup>
-          </div>
-          <div>
-            <div className={styles.container}>
-                <Card>
-                    <CardImg top width="100%" src="" alt="Album Cover" />
-                    <CardBody>
-                        <CardTitle tag="h5">{}</CardTitle>
-                        <CardSubtitle tag="h6" className="mb-2 text-muted">Artist Name</CardSubtitle>
-                        <CardSubtitle tag="h6" className="mb-2 text-muted">Album Name</CardSubtitle>
-                    </CardBody>
-                </Card>
+    const {token,refetchUser,history, playSong} = props
+    const [myHistory, setMyHistory] = useState(history)
+    const [searchValue,setSearchValue] = useState('')
+    useEffect(() => {
+        refetchUser(token)
+    },[])
+    useEffect(() => {
+        if(!searchValue){
+            setMyHistory(history)
+        }
+    },[searchValue])
+    return(
+    
+        <div className={styles.container}>     
+            <div>
+                <InputGroup style={{width: '50%'}}>
+                    <InputGroupAddon addonType="append">
+                        <Button>
+                            <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
+                        </Button>
+                    </InputGroupAddon>
+                    <Input placeholder = "Search" onChange={(event) => {
+                        console.log(event.target.value)
+                        var temp = history?.filter((track) => (track.track.name.toLowerCase().includes(event.target.value.toLowerCase())))
+                        setMyHistory(temp)
+                        setSearchValue(event.target.value)
+                    }}></Input>
+                </InputGroup>
             </div>
-          <br></br>
-      </div>
-  </div>
+            <Row>
+                {myHistory.slice(0,20).map((track,key) => {
+                    var song = track.track
+                    var album = song?.album
+                    var artist = song?.artists[0]
+                    var featuredArtists = song?.artists.splice(0,1)
+                    var songName = song?.name
+                    var albumCover = album?.images[0]?.url
+                    return(
+                        <div className={styles.outerDiv} key={key}>
+                            <DisplayCard
+                                trackName = {songName}
+                                albumCover = {albumCover}
+                                artistName = {artist?.name ? artist.name:album.artists[0].name}
+                                albumName = {album.name}
+                                token = {token}
+                                track = {song}
+                                playSong = {playSong}
+                            />
+                            {/* <Card>
+                                <CardImg top width="100%" src={albumCover} alt="Album Cover" />
+                                <CardBody>
+                                    <CardTitle tag="h5">{songName}</CardTitle>
+                                    <CardSubtitle tag="h6" className="mb-2 text-muted">{artist?.name ? artist.name :  album.artists[0].name}</CardSubtitle>
+                                    <CardSubtitle tag="h6" className="mb-2 text-muted">{album?.name}</CardSubtitle>
+                                </CardBody>
+                            </Card> */}
+                        </div>
+                    )
+                })}
+            </Row> 
+        </div>
 
-  )
+    )
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      // getTopArtists: (token) => dispatch(getTopArtistsRequested(token)),
-      // getTopTracks: (token) => dispatch(getTopTracksRequested)
       playSong: (token, deviceId, songURI, song) => dispatch(playSongRequested(token, deviceId, songURI,song)),
       refetchUser: (token) => dispatch(getProfileRequested(token))
   }
 }
 const mapStateToProps = (state) => {
   return {
-      timestamps:state.User.databaseUser.timestamps,
+      history: state.Player.recentlyPlayed,
       token:state.User.token,
 
   }

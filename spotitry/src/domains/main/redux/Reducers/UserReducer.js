@@ -10,7 +10,7 @@ const InitialState =
     searchedSongs: [],
     token: '',
     loading:false,
-    errors:[],
+    errors:{},
 }
 
 export default function(state = InitialState, action){
@@ -42,7 +42,7 @@ export default function(state = InitialState, action){
             return {
                 ...state,
                 loading: false,
-                errors
+                errors:errors
             }
         }
         case UserDataActions.GET_TOP_ARTISTS_Requested: {
@@ -64,7 +64,7 @@ export default function(state = InitialState, action){
             return {
                 ...state,
                 loading:false,
-                errors
+                errors:errors
             }
         }
         case UserDataActions.GET_TOP_TRACKS_Requested: {
@@ -86,7 +86,7 @@ export default function(state = InitialState, action){
             return {
                 ...state,
                 loading:false,
-                errors
+                errors:errors
             }
         }
         case UserDataActions.setDatabaseUserSucceeded: {
@@ -105,7 +105,7 @@ export default function(state = InitialState, action){
             const { errors } = action 
             return {
                 ...state,
-                errors
+                errors:errors
             }
         }
         case UserDataActions.searchSongsRequested: {
@@ -124,7 +124,7 @@ export default function(state = InitialState, action){
             const { errors } = action 
             return {
                 ...state,
-                errors
+                errors:errors
             }
         }
         default:{

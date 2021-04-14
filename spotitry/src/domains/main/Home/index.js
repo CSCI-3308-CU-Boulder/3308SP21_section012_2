@@ -9,16 +9,8 @@ import {Grid} from '@material-ui/core'
 
 const Home = (props) => {
     var {token, getTopArtists, getTopTracks, topTracks,topArtists,playSong} = props
-
-    useEffect(() => {
-        // getTopArtists(token)
-        // console.log(token)
-    },[])
     console.log(topTracks)
     return(
-        // <>
-        // <div className={styles.header}>This is Home Page</div>
-        // </>
 
         <div className={styles.container}>
             <div class="card d-flex justify-content-center">

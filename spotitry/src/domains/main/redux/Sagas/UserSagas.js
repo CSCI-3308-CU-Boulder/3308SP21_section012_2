@@ -1,14 +1,16 @@
 import { all, takeLatest, call, put } from 'redux-saga/effects';
 import * as Actions from '../Actions/UserActions'
 import axios from 'axios'
-import { PROFILE_ENDPOINT, TOP_ARTISTS_ENDPOINT, TOP_TRACKS_ENDPOINT, SEARCH_ENDPOINT, parseSpecialCharacters } from '../../../../utils/constants'
+import { PROFILE_ENDPOINT, TOP_ARTISTS_ENDPOINT, TOP_TRACKS_ENDPOINT, SEARCH_ENDPOINT, parseSpecialCharacters, } from '../../../../utils/constants'
 import {createAndFetchUser, fetchUser} from '../../../../firebase.js'
+import { getRecentlyPlayedRequested } from '../../../main/redux/Actions/PlaybackActions'
 
 
 export function* initializeUserData({token}){
     yield put (Actions.getTopArtistsRequested(token))
     yield put (Actions.getTopTracksRequested(token))
     yield put (Actions.getProfileRequested(token))
+    yield put (getRecentlyPlayedRequested(token))
 }
 
 export function* getProfile({token}) {
@@ -115,6 +117,7 @@ export function* getTopTracks({token}) {
     }
 
 }
+
 export function* searchSongs({token,searchValue = ''}) {
     try {
         var response = null

@@ -7,8 +7,9 @@ const InitialState =
         item:null
     },
     availableDevices:{},
+    recentlyPlayed: [],
     loading:false,
-    errors:[],
+    errors:{},
 }
 
 export default function(state = InitialState, action){
@@ -32,7 +33,7 @@ export default function(state = InitialState, action){
             return {
                 ...state,
                 loading:false,
-                errors
+                errors:errors
             }
         }
         case playbackActions.setPlaybackInfo: {
@@ -43,6 +44,20 @@ export default function(state = InitialState, action){
                     ...state.playbackInfo,
                     item:song,
                 }
+            }
+        }
+        case playbackActions.getRecentlyPlayedSucceeded: {
+            const {recentlyPlayed} = action
+            return{
+                ...state,
+                recentlyPlayed:recentlyPlayed
+            }
+        }
+        case playbackActions.getRecentlyPlayedFailed: {
+            const {errors} = action
+            return{
+                ...state,
+                errors:errors
             }
         }
         default : {
