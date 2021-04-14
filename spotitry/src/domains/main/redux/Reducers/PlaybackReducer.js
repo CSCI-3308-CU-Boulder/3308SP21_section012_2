@@ -73,6 +73,10 @@ export default function(state = InitialState, action){
                     position_ms:position_ms,
                     songURI:songURI,
                     song:song
+                },
+                playbackInfo:{
+                    ...state.playbackInfo,
+                    item:song
                 }
             }
         }

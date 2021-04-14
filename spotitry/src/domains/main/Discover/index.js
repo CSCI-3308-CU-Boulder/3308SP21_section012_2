@@ -19,27 +19,34 @@ const Discover = (props) => {
     return(
         <>
         <div className={styles.row1}>
-            <div className={styles.header}>
+            <div >
                 <>
                     <img src={currentlyPlaying?.album?.images[1].url} className={styles.pic}/>
-                    <p>{currentlyPlaying?.name}</p>
+                    {/* <p className={styles.header}> {currentlyPlaying?.name}</p> */}
                 </>
-                <SearchBar
-                    setSearchValue={setSearchValue}
-                />
-
-                { searchValue &&
-                    searchedSongs.map((song, key) => (
-                        <div className={styles.row} key={key} >
-                            <img src={song.album.images[0].url} className={styles.smallPic}/>
-                            <p
-                            style={{cursor:'pointer'}}
-                            onClick={() => { 
+                <div className={styles.searchBar}>
+                    <SearchBar
+                        setSearchValue={setSearchValue}
+                    />
+                </div>
+                <div className={styles.searchResults}>
+                    { searchValue &&
+                        searchedSongs.map((song, key) => (
+                            <div 
+                                className={styles.row} key={key} 
+                                style={{cursor:'pointer', backgroundColor: 'white', marginBottom:'20px', borderRadius:'20px', width: '375px'}}
+                                onClick={() => { 
                                     setSelectedSong(song.track_number-1,song.album.uri,song)
-                                }}>{song.name}</p>
-                        </div>
-                    ))
-                }
+                                }}
+                            >
+
+                                <img src={song.album.images[0].url} className={styles.smallPic}/>
+                                <p
+                                style={{cursor:'pointer', marginTop:'10px', marginLeft:'20px'}}>{song.name}</p>
+                            </div>
+                        ))
+                    }
+                </div>
             </div>
             <div className={styles.timestamp}>
             <Button
