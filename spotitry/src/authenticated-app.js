@@ -9,9 +9,12 @@ import Discover from './domains/main/Discover';
 import History from './domains/main/History';
 import { StoreToken } from './domains/main/redux/Actions/UserActions.js'
 import { connect } from 'react-redux'
+import SpotifyPlayer from 'react-spotify-web-playback';
 
 const AuthenticatedApp = (props) => {
-  var {token, storeToken} = props
+  var {token, storeToken, selectedSong} = props
+  const {position_ms, song, songURI} = selectedSong
+  console.log(position_ms)
   useEffect(() => {
     if(!token){
       storeToken(hash.access_token)
@@ -20,6 +23,27 @@ const AuthenticatedApp = (props) => {
     return(
       <>
       <NavBar/>
+      {song && 
+      <div
+        style={{position:'fixed', width:'100%', zIndex:'100', bottom: '0px'}}
+      >
+        <SpotifyPlayer
+            styles={{
+              bgColor:'#282c34',
+              color:'#1DB954',
+              trackNameColor:'#1DB954',
+              trackArtistColor:'white',
+            }}
+            token={token}
+            uris={[songURI]}
+            offset={position_ms}
+            autoPlay={true}
+            showSaveIcon={true}
+            persistDeviceSelection={true}
+        />
+
+      </div>
+      }
       <Switch>
         <Route
           exact
@@ -64,7 +88,8 @@ const mapDispatchToProps = (dispatch) => {
 }
 const mapStateToProps = (state) => {
   return{
-    token:state.User.token
+    token:state.User.token,
+    selectedSong:state.Player.selectedSong
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(AuthenticatedApp);

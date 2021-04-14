@@ -9,6 +9,7 @@ export const playbackActions = {
     getRecentlyPlayedRequested: 'Get Recently Played Requested',
     getRecentlyPlayedSucceeded: 'Get Recently Played Succeeded',
     getRecentlyPlayedFailed: 'Get Recently Played Failed',
+    setSelectedSong: 'Set Selected Song'
 }
 
 export function getPlaybackInfoRequested(token,createTimestamp,userId){
@@ -75,5 +76,13 @@ export function getRecentlyPlayedRequested(token){
     return{
         type: playbackActions.getRecentlyPlayedRequested,
         token
+    }
+}
+export function setSelectedSong(position_ms = 0,songURI,song){
+    return{
+        type:playbackActions.setSelectedSong,
+        position_ms,
+        songURI,
+        song
     }
 }

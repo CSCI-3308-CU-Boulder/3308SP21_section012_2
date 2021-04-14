@@ -30,12 +30,16 @@ export const scopes = [
     "user-read-recently-played",
     "user-top-read",
     "user-read-playback-position",
+    'user-modify-playback-state',
+    'user-read-private',
+    'user-read-email',
+    'user-library-read',
+    'user-library-modify',
     "playlist-modify-public",
     "playlist-modify-private",
     "playlist-read-private",
     "playlist-read-collaborative",
-    'user-read-email',
-    'user-modify-playback-state'
+    'streaming',
   ];
 
 export const PROFILE_ENDPOINT  = 'https://api.spotify.com/v1/me'

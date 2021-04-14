@@ -5,11 +5,14 @@ import { useHistory } from 'react-router-dom';
 
 
 const DisplayCard = (props) => {
-    const {token, track, artistName,albumName, albumCover, trackName, playSong} = props;
+    const {token, track, artistName,albumName, albumCover, trackName, setSelectedSong, selectedSong} = props;
     return(
         <Col style={{height: '50%', display: 'flex', marginTop: "10px"}}
             onClick={() => {
-                playSong(token,0,track?.uri,track);      
+                selectedSong?.song?.album?.uri == track.album.uri ?
+                    setSelectedSong(0,track.uri,track)
+                    :
+                    setSelectedSong(track.track_number-1,track.album?.uri,track);      
             }}
         >
             <Card style={{cursor:'pointer', width: '210px', height: "500px"}}>

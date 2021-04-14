@@ -32,12 +32,12 @@
 .row1 {
     flex-direction: row;
     display: flex;
-    min-height: 88.2vh;
+    height: 87vh;
     color:  #1DB954;
     background-color: #282c34;
     justify-content: space-around;
     align-items: center;
-
+    overflow: scroll;
 }
 .timestamp{
     margin-top: 100px;

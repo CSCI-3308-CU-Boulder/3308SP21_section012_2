@@ -3,22 +3,21 @@ import styles from './index.module.css'
 import { connect } from 'react-redux'
 import SearchBar from '../../../components/searchBar'
 import { searchSongsRequested } from '../redux/Actions/UserActions.js'
-import { getPlaybackInfoRequested , playbackActions, playSongRequested } from '../redux/Actions/PlaybackActions.js'
-import {Tabs, Tab, Button} from '@material-ui/core'
+import { getPlaybackInfoRequested, playSongRequested, setSelectedSong } from '../redux/Actions/PlaybackActions.js'
+import { Button } from '@material-ui/core'
 
 
 const Discover = (props) => {
-    const {searchSongs, getPlaybackInfo, token, searchedSongs, playSong, currentlyPlaying, availableDevices,userId} = props
+    const {searchSongs, getPlaybackInfo, token, searchedSongs, playSong, currentlyPlaying,userId, setSelectedSong} = props
     const [searchValue, setSearchValue] = useState('') 
-    const [selectedSong, setSelectedSong] = useState('')
     useEffect(() => {
         getPlaybackInfo(token)
         if(searchValue){
             searchSongs(token,searchValue)
         }
     },[searchValue])
-    console.log(userId)
     return(
+        <>
         <div className={styles.row1}>
             <div className={styles.header}>
                 <>
@@ -33,9 +32,10 @@ const Discover = (props) => {
                     searchedSongs.map((song, key) => (
                         <div className={styles.row} key={key} >
                             <img src={song.album.images[0].url} className={styles.smallPic}/>
-                            <p onClick={() => {
-                                    playSong(token,0,song?.uri,song,'play');      
-                                    setSelectedSong(song)
+                            <p
+                            style={{cursor:'pointer'}}
+                            onClick={() => { 
+                                    setSelectedSong(song.track_number-1,song.album.uri,song)
                                 }}>{song.name}</p>
                         </div>
                     ))
@@ -53,6 +53,7 @@ const Discover = (props) => {
 
             </div>
         </div>
+        </>
     )
 }
 
@@ -60,7 +61,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         searchSongs: (token, searchValue) => dispatch(searchSongsRequested(token,searchValue)),
         getPlaybackInfo: (token,create,userId) => dispatch(getPlaybackInfoRequested(token,create,userId)),
-        playSong: (token, deviceId, songURI, song) => dispatch(playSongRequested(token, deviceId, songURI,song))
+        playSong: (token, deviceId, songURI, song) => dispatch(playSongRequested(token, deviceId, songURI,song)),
+        setSelectedSong: (token, songURI, song) => dispatch(setSelectedSong(token, songURI, song))
     }
 }
 const mapStateToProps = (state) => {
@@ -68,7 +70,7 @@ const mapStateToProps = (state) => {
         token:state.User.token,
         searchedSongs:state.User.searchedSongs,
         availableDevices: state.Player.availableDevices.devices,
-        currentlyPlaying: state.Player.playbackInfo.item,
+        currentlyPlaying: state.Player.playbackInfo?.item,
         availableDevices: state.Player.availableDevices,
         userId: state.User.databaseUser.userId,
     }
