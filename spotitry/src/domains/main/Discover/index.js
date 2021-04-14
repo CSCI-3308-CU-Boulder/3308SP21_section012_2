@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import SearchBar from '../../../components/searchBar'
 import { searchSongsRequested } from '../redux/Actions/UserActions.js'
 import { getPlaybackInfoRequested, playSongRequested, setSelectedSong } from '../redux/Actions/PlaybackActions.js'
+import { Input } from 'reactstrap'
 import { Button } from '@material-ui/core'
 
 
