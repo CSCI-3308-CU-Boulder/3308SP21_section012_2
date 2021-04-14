@@ -1,12 +1,14 @@
 .header {
-    margin-top: -100px;
+    margin-top: -35px;
     font-size: 18px;
-    left: 20px;
+    /* left: -30px; */
+    align-self: flex-start;
     /* position: relative; */
     /* position: fixed; */
 }
 .pic{
     width: 375px;
+    height: 310px;
     position: fixed;
     top: 55px;
     left: 128px;
@@ -61,6 +63,7 @@
     top: 400px;
     width: 377px;
     overflow: scroll;
+    left:126px
 }
 
 .searchResults {
@@ -68,6 +71,7 @@
     flex-direction: column;
     top: 440px;
     height: 325px;
+    left: 125px;
     position: absolute;
     overflow: scroll;
 }

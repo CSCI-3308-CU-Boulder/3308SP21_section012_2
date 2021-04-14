@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import SearchBar from '../../../components/searchBar'
 import { searchSongsRequested } from '../redux/Actions/UserActions.js'
 import { getPlaybackInfoRequested, playSongRequested, setSelectedSong } from '../redux/Actions/PlaybackActions.js'
+import { Input } from 'reactstrap'
 import { Button } from '@material-ui/core'
 
 
@@ -21,8 +22,8 @@ const Discover = (props) => {
         <div className={styles.row1}>
             <div >
                 <>
-                    <img src={currentlyPlaying?.album?.images[1].url} className={styles.pic}/>
-                    {/* <p className={styles.header}> {currentlyPlaying?.name}</p> */}
+                    {currentlyPlaying && <img src={currentlyPlaying?.album?.images[1].url} className={styles.pic}/>}
+                    <p className={styles.header}> {currentlyPlaying?.name}</p>
                 </>
                 <div className={styles.searchBar}>
                     <SearchBar
