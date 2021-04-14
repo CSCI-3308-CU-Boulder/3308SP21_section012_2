@@ -71,7 +71,7 @@ const Timestamps = (props) => {
                                 <CardImg top width="100%" src={albumCover} alt="Album Cover" style={{width:'200px',padding:'none'}} className={styles.image}/>
                                 <CardBody>
                                     <CardTitle tag="h5">{songName}</CardTitle>
-                                    <CardSubtitle tag="h6" className="mb-2 text-muted">{timestamps[0]?.song.artists[0]?.name}</CardSubtitle>
+                                    <CardSubtitle tag="h6" className="mb-2 text-muted">{timestamps[0]?.song.artists[0]?.name ? timestamps[0].song.artists[0].name: timestamps[0].song.album.artists[0].name}</CardSubtitle>
                                     <CardSubtitle tag="h6" className="mb-2 text-muted">{album?.name}</CardSubtitle>
                                     <CardText>Timestamps:</CardText>
                                     {timestamps.map((timestamp, key) => {

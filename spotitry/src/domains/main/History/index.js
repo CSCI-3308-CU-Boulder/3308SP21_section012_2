@@ -3,13 +3,14 @@ import styles from '../History/index.module.css'
 import { connect } from 'react-redux'
 import { getProfileRequested } from '../redux/Actions/UserActions'
 import { playSongRequested } from '../redux/Actions/PlaybackActions'
-import {Table, InputGroup, InputGroupAddon, InputGroupText, Input, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Row, Col } from 'reactstrap'
+import {Table, InputGroup, InputGroupAddon, InputGroupText, Input, Button, Row, Col } from 'reactstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import DisplayCard from '../../../components/DisplayCard';
 
 const History = (props) => {
-    const {token,refetchUser,history} = props
+    const {token,refetchUser,history, playSong} = props
     const [myHistory, setMyHistory] = useState(history)
     const [searchValue,setSearchValue] = useState('')
     useEffect(() => {
@@ -38,28 +39,37 @@ const History = (props) => {
                     }}></Input>
                 </InputGroup>
             </div>
-            {myHistory.map((track,key) => {
-                var song = track.track
-                var album = song?.album
-                var artist = song?.artists[0]
-                var featuredArtists = song?.artists.splice(0,1)
-                var songName = song?.name
-                var albumCover = album?.images[0]?.url
-                return(
-                    <div className={styles.outerDiv} key={key}>
-                        <Card>
-                            <CardImg top width="100%" src={albumCover} alt="Album Cover" />
-                            <CardBody>
-                                <CardTitle tag="h5">{songName}</CardTitle>
-                                <CardSubtitle tag="h6" className="mb-2 text-muted">{artist?.name ? artist.name :  album.artists[0].name}</CardSubtitle>
-                                <CardSubtitle tag="h6" className="mb-2 text-muted">{album?.name}</CardSubtitle>
-                            </CardBody>
-                        </Card>
-                    </div>
-                )
-            })
-
-            }
+            <Row>
+                {myHistory.slice(0,20).map((track,key) => {
+                    var song = track.track
+                    var album = song?.album
+                    var artist = song?.artists[0]
+                    var featuredArtists = song?.artists.splice(0,1)
+                    var songName = song?.name
+                    var albumCover = album?.images[0]?.url
+                    return(
+                        <div className={styles.outerDiv} key={key}>
+                            <DisplayCard
+                                trackName = {songName}
+                                albumCover = {albumCover}
+                                artistName = {artist?.name ? artist.name:album.artists[0].name}
+                                albumName = {album.name}
+                                token = {token}
+                                track = {song}
+                                playSong = {playSong}
+                            />
+                            {/* <Card>
+                                <CardImg top width="100%" src={albumCover} alt="Album Cover" />
+                                <CardBody>
+                                    <CardTitle tag="h5">{songName}</CardTitle>
+                                    <CardSubtitle tag="h6" className="mb-2 text-muted">{artist?.name ? artist.name :  album.artists[0].name}</CardSubtitle>
+                                    <CardSubtitle tag="h6" className="mb-2 text-muted">{album?.name}</CardSubtitle>
+                                </CardBody>
+                            </Card> */}
+                        </div>
+                    )
+                })}
+            </Row> 
         </div>
 
     )
