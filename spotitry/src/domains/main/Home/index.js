@@ -8,16 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Home = (props) => {
     var {token, getTopArtists, getTopTracks, topTracks,topArtists,playSong} = props
-
-    useEffect(() => {
-        // getTopArtists(token)
-        // console.log(token)
-    },[])
     console.log(topTracks)
     return(
-        // <>
-        // <div className={styles.header}>This is Home Page</div>
-        // </>
 
         <div className={styles.container}>
             <div class="card d-flex justify-content-center">
@@ -30,7 +22,7 @@ const Home = (props) => {
                 <tbody>
                 {topTracks.slice(0,10)?.map((track,key) => {
                     return(
-                        <tr>
+                        <tr key={key}>
                             <th scope="row">{key+1}</th>
                             <td colSpan="1">
                                 <div 
@@ -66,7 +58,7 @@ const Home = (props) => {
                 <tbody>
                 {topArtists.slice(0,10)?.map((artist,key) => {
                     return(
-                        <tr>
+                        <tr key={key}>
                             <th scope="row">{key+1}</th>
                             <td>
                                 <div className={styles.table}>

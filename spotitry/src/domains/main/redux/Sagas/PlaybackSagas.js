@@ -51,9 +51,31 @@ export function* playSong({token, position_ms, songURI, song}){
     }
 }
 
+export function* getRecentlyPlayed({token}) {
+    try {
+        const response =  yield call(axios.get,`${PLAYER_ENDPOINT}/recently-played`,
+            { headers: {'Authorization': 'Bearer ' + token }})
+        if(response) {
+            console.log(response)
+            const recentlyPlayed = response.data.items
+            console.log(recentlyPlayed)
+            yield put(Actions.getRecentlyPlayedSucceeded(recentlyPlayed))
+        }
+        else {
+            yield put(Actions.getRecentlyPlayedFailed('Could not get recently played'))
+        }
+    
+    }
+    catch(error) {
+        yield put(Actions.getRecentlyPlayedFailed(error))
+    }
+
+}
+
 export default function* () {
     yield all([
         yield takeLatest(Actions.playbackActions.getPlaybackInfoRequested, getPlaybackInfo),
         yield takeLatest(Actions.playbackActions.playSongRequested, playSong),
+        yield takeLatest(Actions.playbackActions.getRecentlyPlayedRequested, getRecentlyPlayed)
     ]);
 }

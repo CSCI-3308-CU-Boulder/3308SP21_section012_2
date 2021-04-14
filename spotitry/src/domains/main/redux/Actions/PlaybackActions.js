@@ -5,7 +5,10 @@ export const playbackActions = {
     playSongRequested: 'Play Song Requested',
     playSongSucceeded: 'Play Song Succeeded',
     playSongFailed: 'Play Song Failed',
-    setPlaybackInfo: 'Set Playback Info'
+    setPlaybackInfo: 'Set Playback Info',
+    getRecentlyPlayedRequested: 'Get Recently Played Requested',
+    getRecentlyPlayedSucceeded: 'Get Recently Played Succeeded',
+    getRecentlyPlayedFailed: 'Get Recently Played Failed',
 }
 
 export function getPlaybackInfoRequested(token,createTimestamp,userId){
@@ -54,5 +57,23 @@ export function setPlaybackInfo(song){
     return{
         type:playbackActions.setPlaybackInfo,
         song
+    }
+}
+export function getRecentlyPlayedSucceeded(recentlyPlayed){
+    return{
+        type: playbackActions.getRecentlyPlayedSucceeded,
+        recentlyPlayed
+    }
+}
+export function getRecentlyPlayedFailed(errors){
+    return{
+        type: playbackActions.getRecentlyPlayedFailed,
+        errors
+    }
+}
+export function getRecentlyPlayedRequested(token){
+    return{
+        type: playbackActions.getRecentlyPlayedRequested,
+        token
     }
 }

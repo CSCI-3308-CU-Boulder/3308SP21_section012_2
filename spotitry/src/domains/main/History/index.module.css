@@ -14,3 +14,7 @@
     font-size: calc(10px + 2vmin);
     color:  #1DB954;
 }
+
+.outerDiv {
+    margin: auto;
+}

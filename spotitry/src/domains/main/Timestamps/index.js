@@ -13,6 +13,8 @@ const Timestamps = (props) => {
     const {token, timestamps, refetchUser,playSong} = props
     const [timestampsBySong,setTimeStampsBySong] = useState([])
     const [searchValue, setSearchValue] = useState('')
+    const [allTimeStampsBySong,setAllTimeStampsBySong] = useState('')
+    
     useEffect(() => {   
         if(!searchValue && timestamps){
             var tempArr2 = []
@@ -22,9 +24,8 @@ const Timestamps = (props) => {
                 tempArr2.push(Object?.values(timestamps))
             ))
                setTimeStampsBySong(tempArr2)
-
+               setAllTimeStampsBySong(tempArr2)
         }
-
     },[timestamps,searchValue])
     useEffect(() => (
         refetchUser(token)
@@ -46,7 +47,8 @@ const Timestamps = (props) => {
                         </Button>
                     </InputGroupAddon>
                     <Input placeholder = "Search" onChange={(event) => {
-                        var temp = timestampsBySong.filter((timestamps) => (timestamps[0].song.name.toLowerCase().includes(event.target.value.toLowerCase())))
+                        console.log(event.target.value)
+                        var temp = allTimeStampsBySong?.filter((timestamps) => (timestamps[0].song.name.toLowerCase().includes(event.target.value.toLowerCase())))
                         setTimeStampsBySong(temp)
                         setSearchValue(event.target.value)
                     }}></Input>
@@ -54,7 +56,7 @@ const Timestamps = (props) => {
             </div>
             <div>
                 {timestampsBySong?.length != 0 && 
-                timestampsBySong?.map((timestamps) => {
+                timestampsBySong?.map((timestamps, key) => {
                     var timestamps = Object.values(timestamps)
                     console.log(timestamps)
                     var song = timestamps[0]?.song
@@ -64,7 +66,7 @@ const Timestamps = (props) => {
                     var songName = song?.name
                     var albumCover = album?.images[0]?.url
                     return(
-                        <div className={styles.container}>
+                        <div className={styles.container} key={key}>
                             <Card>
                                 <CardImg top width="100%" src={albumCover} alt="Album Cover" style={{width:'200px',padding:'none'}} className={styles.image}/>
                                 <CardBody>
@@ -78,7 +80,7 @@ const Timestamps = (props) => {
                                         var track = song
                                         // console.log(timeSet)
                                         return(
-                                            <div className="column">
+                                            <div className="column" key={key}>
                                                 <Button
                                                     onClick={() => {console.log(timeSet);playSong(token,timeSet,track?.uri,track)}}
                                                 >
