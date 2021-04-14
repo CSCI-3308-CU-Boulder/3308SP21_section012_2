@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from './index.module.css'
-import { playSongRequested } from '../redux/Actions/PlaybackActions.js'
+import { playSongRequested , setSelectedSong} from '../redux/Actions/PlaybackActions.js'
 import { connect } from 'react-redux'
 import { Table, Card, CardImg, CardBody, CardTitle, CardHeader, CardSubtitle, Col, Row} from 'reactstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,7 +8,7 @@ import {Grid} from '@material-ui/core'
 
 
 const Home = (props) => {
-    var {token, getTopArtists, getTopTracks, topTracks,topArtists,playSong} = props
+    var {token,topTracks,topArtists,setSelectedSong, selectedSong} = props
     console.log(topTracks)
     return(
 
@@ -22,14 +22,17 @@ const Home = (props) => {
                 <Row style={{height: '800px', marginBottom: "20px"}}>
                 {topTracks.slice(0,10)?.map((track,key) => {
                     return(
-                        <Col style={{height: '50%', display: 'flex', marginTop: "10px"}}
+                        <Col style={{height: '50%', display: 'flex', marginTop: "10px", }}
                             onClick={() => {
-                                playSong(token,0,track?.uri,track);      
+                                selectedSong?.song?.album?.uri == track.album.uri ?
+                                setSelectedSong(0,track.uri,track)
+                                :
+                                setSelectedSong(track.track_number-1,track.album?.uri,track);        
                             }}
                         >
-                            <Card>
+                            <Card style={{cursor:'pointer', width: '210px'}}>
                                 <CardImg top width="100%" src="" alt="Album Cover" style={{width:'210px'}} src={track.album.images[0].url}/>
-                                <CardHeader>
+                                <CardHeader style={{}}>
                                     <CardTitle tag="h5">{key+1}.  {track.name}</CardTitle>
                                 </CardHeader>
                                 <CardBody>
@@ -48,13 +51,13 @@ const Home = (props) => {
                 </div>
             </div>
             <div>
-                <Row style={{height: '500px', justifyContent: 'center'}}>
+                <Row style={{height:'550px', marginBottom: '20px'}}>
                 {topArtists.slice(0,10)?.map((artist,key) => {
                     return(
-                        <Col style={{height: '50%', display: 'flex', marginTop: '10px'}}>
-                            <Card>
-                                <CardImg top width="100%" alt="Artist Pic" style={{width:'200px', height: '200px'}} src={artist.images[0].url}/>
-                                <CardHeader>
+                        <Col style={{height: '50%', display: 'flex', marginTop:'10px'}}>
+                            <Card style={{cursor: 'pointer', width:'210px'}}>
+                                <CardImg alt="Artist Pic" style={{width:'210px', height: '210px'}} src={artist.images[0].url}/>
+                                <CardHeader style={{height:'100px'}}>
                                     <CardTitle tag="h5">{key+1}.  {artist.name}</CardTitle>
                                 </CardHeader>
                             </Card>
@@ -70,7 +73,8 @@ const Home = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        playSong: (token, deviceId, songURI, song) => dispatch(playSongRequested(token, deviceId, songURI,song))
+        playSong: (token, deviceId, songURI, song) => dispatch(playSongRequested(token, deviceId, songURI,song)),
+        setSelectedSong: (token, songURI, song) => dispatch(setSelectedSong(token, songURI, song))
     }
 }
 const mapStateToProps = (state) => {
@@ -78,6 +82,7 @@ const mapStateToProps = (state) => {
         token:state.User.token,
         topTracks:state.User.topTracks,
         topArtists: state.User.topArtists,
+        selectedSong: state.Player.selectedSong
 
     }
 }
