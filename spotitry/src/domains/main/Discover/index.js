@@ -4,7 +4,11 @@ import { connect } from 'react-redux'
 import SearchBar from '../../../components/searchBar'
 import { searchSongsRequested } from '../redux/Actions/UserActions.js'
 import { getPlaybackInfoRequested, playSongRequested, setSelectedSong } from '../redux/Actions/PlaybackActions.js'
-import { Button } from '@material-ui/core'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Input, InputGroupAddon, InputGroup, Button, Card, CardImg, CardTitle } from 'reactstrap'
+// import { Button } from '@material-ui/core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 
 const Discover = (props) => {
@@ -18,39 +22,56 @@ const Discover = (props) => {
     },[searchValue])
     return(
         <>
-        <div className={styles.row1}>
-            <div className={styles.header}>
+        <div style={{width: '100%', display: 'flex'}}>
+            <div className={styles.container} style={{width: '50%'}}>
                 <>
                     <img src={currentlyPlaying?.album?.images[1].url} className={styles.pic}/>
                     <p>{currentlyPlaying?.name}</p>
                 </>
-                <SearchBar
+                {/* <SearchBar
                     setSearchValue={setSearchValue}
-                />
+                /> */}
+                    <InputGroup style={{width: '100%'}}>
+                        <InputGroupAddon addonType="append">
+                            <Button>
+                                <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
+                            </Button>
+                        </InputGroupAddon>
+                        <Input placeholder = "Search" onChange={(event) => {
+                            console.log(event.target.value)
+                            var temp = {setSearchValue}
+                            searchSongs(temp)
+                            setSearchValue(event.target.value)
+                        }}></Input>
+                    </InputGroup>
+
+                <br></br>        
 
                 { searchValue &&
                     searchedSongs.map((song, key) => (
-                        <div className={styles.row} key={key} >
-                            <img src={song.album.images[0].url} className={styles.smallPic}/>
-                            <p
+                        // <div className={styles.container} key={key} >
+                            <Card style={{width:'200px', marginBottom: '10px'}} key={key}>
+                            <CardImg top width="200px" src={song.album.images[0].url} alt="Album Cover" style={{width:'200px',padding:'none'}} className={styles.images}/>
+                            {/* <img src={song.album.images[0].url} className={styles.smallPic}/> */}
+                            <CardTitle
                             style={{cursor:'pointer'}}
                             onClick={() => { 
                                     setSelectedSong(song.track_number-1,song.album.uri,song)
-                                }}>{song.name}</p>
-                        </div>
+                                }}>{song.name}</CardTitle>
+                            </Card>
+                        // </div>
                     ))
                 }
             </div>
-            <div className={styles.timestamp}>
-            <Button
-                style={{height: '75px', width: '150px', margin: "20px"}}
-                variant='contained' 
-                className={styles.timestampButton}
-                onClick={() => getPlaybackInfo(token,1,userId)}
-                >
-                Timestamp
-            </Button>
-
+            <div className={styles.container} style={{width: '50%'}}>
+                <Button
+                    style={{height: '75px', width: '150px', margin: "20px"}}
+                    variant='contained' 
+                    className={styles.timestampButton}
+                    onClick={() => getPlaybackInfo(token,1,userId)}
+                    >
+                    Timestamp
+                </Button>
             </div>
         </div>
         </>
