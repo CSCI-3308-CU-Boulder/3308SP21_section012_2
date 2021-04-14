@@ -24,9 +24,16 @@ const Discover = (props) => {
                     <img src={currentlyPlaying?.album?.images[1].url} className={styles.pic}/>
                     <p>{currentlyPlaying?.name}</p>
                 </>
-                <SearchBar
+                {/* <SearchBar
                     setSearchValue={setSearchValue}
-                />
+                /> */}
+
+                    <Input placeholder = "Search" onChange={(event) => {
+                        console.log(event.target.value)
+                        var temp = {setSearchValue}
+                        searchSongs(temp)
+                        setSearchValue(event.target.value)
+                    }}></Input>
 
                 { searchValue &&
                     searchedSongs.map((song, key) => (
