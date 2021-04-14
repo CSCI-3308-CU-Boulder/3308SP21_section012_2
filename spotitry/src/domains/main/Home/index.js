@@ -30,7 +30,11 @@ const Home = (props) => {
                 <Row style={{height: '800px', marginBottom: "20px"}}>
                 {topTracks.slice(0,10)?.map((track,key) => {
                     return(
-                        <Col style={{height: '50%', display: 'flex', marginTop: "10px"}}>
+                        <Col style={{height: '50%', display: 'flex', marginTop: "10px"}}
+                            onClick={() => {
+                                playSong(token,0,track?.uri,track);      
+                            }}
+                        >
                             <Card>
                                 <CardImg top width="100%" src="" alt="Album Cover" style={{width:'210px'}} src={track.album.images[0].url}/>
                                 <CardHeader>

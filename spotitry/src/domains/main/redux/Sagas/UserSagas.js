@@ -1,8 +1,9 @@
 import { all, takeLatest, call, put } from 'redux-saga/effects';
 import * as Actions from '../Actions/UserActions'
 import axios from 'axios'
-import { PROFILE_ENDPOINT, TOP_ARTISTS_ENDPOINT, TOP_TRACKS_ENDPOINT, SEARCH_ENDPOINT} from '../../../../utils/constants'
+import { PROFILE_ENDPOINT, TOP_ARTISTS_ENDPOINT, TOP_TRACKS_ENDPOINT, SEARCH_ENDPOINT, parseSpecialCharacters } from '../../../../utils/constants'
 import {createAndFetchUser, fetchUser} from '../../../../firebase.js'
+
 
 export function* initializeUserData({token}){
     yield put (Actions.getTopArtistsRequested(token))
@@ -35,14 +36,19 @@ export function* getProfile({token}) {
 }
 
 //After Spotify authenticates, pull the data from firebase or create a new user
-export function* setDatabaseUser({data}) {    const {email,id,display_name} = data
+export function* setDatabaseUser({data}) {    
+    const {email,id,display_name} = data
+    console.log(data)
+
     try{
-        const user = yield fetchUser(id)
+        const parsedId = parseSpecialCharacters(id)
+        console.log(parsedId)
+        const user = yield fetchUser(parsedId)
         if(!user){
-            yield call(createAndFetchUser(id,display_name,email))
+            yield call(createAndFetchUser(parsedId,display_name,email))
             user = {
                 email:email,
-                id:id,
+                id:parsedId,
                 display_name:display_name
             }
         }
@@ -50,13 +56,22 @@ export function* setDatabaseUser({data}) {    const {email,id,display_name} = da
         
     }
     catch(error){
-        const user = {
-            email:email,
-            userId:123456,
-            display_name:display_name
+        try{
+            const {email,id,display_name} = data
+            const parsedId = parseSpecialCharacters(id)
+            const user = {
+                email:email,
+                userId:parsedId,
+                display_name:display_name
+            }
+            yield call(createAndFetchUser(parsedId,display_name,email))
+            yield put(Actions.setDatabaseUserSucceeded(user))
+
         }
-        yield put(Actions.setDatabaseUserSucceeded(user))
-        yield put (Actions.setDatabaseUserFailed(error))
+        catch(error){
+            yield put (Actions.setDatabaseUserFailed(error))
+            console.log(error)
+        }
     }
 
 }

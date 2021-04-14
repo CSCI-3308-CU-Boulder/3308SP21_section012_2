@@ -8,13 +8,8 @@
     padding: 50px;
     align-content: center;
     background-color: #282c34;
-    min-height: 94.2vh;
     display: flex;
     flex-direction: column;
     font-size: calc(10px + 2vmin);
     color:  #1DB954;
-}
-
-.image{
-    
 }
