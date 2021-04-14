@@ -12,7 +12,7 @@ const DisplayCard = (props) => {
                 selectedSong?.song?.album?.uri == track.album.uri ?
                     setSelectedSong(0,track.uri,track)
                     :
-                    setSelectedSong(track.track_number-1,track.album?.uri,track);      
+                    setSelectedSong(track.track_number-1,track.album?.uri,track);        
             }}
         >
             <Card style={{cursor:'pointer', width: '210px', height: "500px"}}>
