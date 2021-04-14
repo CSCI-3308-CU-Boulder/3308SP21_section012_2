@@ -14,6 +14,7 @@ import SpotifyPlayer from 'react-spotify-web-playback';
 const AuthenticatedApp = (props) => {
   var {token, storeToken, selectedSong} = props
   const {position_ms, song, songURI} = selectedSong
+  console.log(position_ms)
   useEffect(() => {
     if(!token){
       storeToken(hash.access_token)
@@ -35,11 +36,10 @@ const AuthenticatedApp = (props) => {
             }}
             token={token}
             uris={[songURI]}
-            offset={0}
+            offset={position_ms}
             autoPlay={true}
             showSaveIcon={true}
             persistDeviceSelection={true}
-            position_ms={position_ms}
         />
 
       </div>

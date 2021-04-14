@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from './index.module.css'
-import { playSongRequested } from '../redux/Actions/PlaybackActions.js'
+import { playSongRequested , setSelectedSong} from '../redux/Actions/PlaybackActions.js'
 import { connect } from 'react-redux'
 import { Table, Card, CardImg, CardBody, CardTitle, CardHeader, CardSubtitle, Col, Row} from 'reactstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,7 +8,7 @@ import {Grid} from '@material-ui/core'
 
 
 const Home = (props) => {
-    var {token, getTopArtists, getTopTracks, topTracks,topArtists,playSong} = props
+    var {token,topTracks,topArtists,setSelectedSong, selectedSong} = props
     console.log(topTracks)
     return(
 
@@ -24,7 +24,10 @@ const Home = (props) => {
                     return(
                         <Col style={{height: '50%', display: 'flex', marginTop: "10px", }}
                             onClick={() => {
-                                playSong(token,0,track?.uri,track);      
+                                selectedSong?.song?.album?.uri == track.album.uri ?
+                                setSelectedSong(0,track.uri,track)
+                                :
+                                setSelectedSong(track.track_number-1,track.album?.uri,track);        
                             }}
                         >
                             <Card style={{cursor:'pointer', width: '210px'}}>
@@ -70,7 +73,8 @@ const Home = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        playSong: (token, deviceId, songURI, song) => dispatch(playSongRequested(token, deviceId, songURI,song))
+        playSong: (token, deviceId, songURI, song) => dispatch(playSongRequested(token, deviceId, songURI,song)),
+        setSelectedSong: (token, songURI, song) => dispatch(setSelectedSong(token, songURI, song))
     }
 }
 const mapStateToProps = (state) => {
@@ -78,6 +82,7 @@ const mapStateToProps = (state) => {
         token:state.User.token,
         topTracks:state.User.topTracks,
         topArtists: state.User.topArtists,
+        selectedSong: state.Player.selectedSong
 
     }
 }

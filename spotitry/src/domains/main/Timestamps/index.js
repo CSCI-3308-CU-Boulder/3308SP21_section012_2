@@ -10,7 +10,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 
 const Timestamps = (props) => {
-    const {token, timestamps, refetchUser,playSong, setSelectedSong} = props
+    const {token, timestamps, refetchUser,playSong, setSelectedSong, selectedSong} = props
     const [timestampsBySong,setTimeStampsBySong] = useState([])
     const [searchValue, setSearchValue] = useState('')
     const [allTimeStampsBySong,setAllTimeStampsBySong] = useState('')
@@ -82,10 +82,16 @@ const Timestamps = (props) => {
                                             <div className="column" key={key}>
                                                 <Button
                                                     onClick={() => {
-                                                        console.log(timeSet)
-                                                        // setSelectedSong(timeSet,track?.uri,track)
-                                                        playSong(token,timeSet,track?.uri,track)
-                                                    }}
+                                                        if(!selectedSong) {
+                                                            // setSelectedSong(0,track?.uri,track);
+                                                            // playSong(token,timeSet,track?.uri,track)
+                                                        }
+                                                        else{
+                                                            setSelectedSong(0,track?.uri,track);
+                                                            playSong(token,timeSet,track?.uri,track)
+                                                        }}
+
+                                                    }
                                                 >
                                                     Timestamp #{key+1} {millisToMinutesAndSeconds(timeSet)} of {millisToMinutesAndSeconds(totalTime)}
                                                 </Button>
@@ -118,7 +124,7 @@ const mapStateToProps = (state) => {
     return {
         timestamps:state.User.databaseUser.timestamps,
         token:state.User.token,
-
+        selectedSong: state.Player.selectedSong
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Timestamps);

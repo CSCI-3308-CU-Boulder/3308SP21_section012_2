@@ -3,7 +3,7 @@ import styles from './index.module.css'
 import { connect } from 'react-redux'
 import SearchBar from '../../../components/searchBar'
 import { searchSongsRequested } from '../redux/Actions/UserActions.js'
-import { getPlaybackInfoRequested , playbackActions, playSongRequested, setSelectedSong } from '../redux/Actions/PlaybackActions.js'
+import { getPlaybackInfoRequested, playSongRequested, setSelectedSong } from '../redux/Actions/PlaybackActions.js'
 import { Button } from '@material-ui/core'
 
 
@@ -34,9 +34,8 @@ const Discover = (props) => {
                             <img src={song.album.images[0].url} className={styles.smallPic}/>
                             <p
                             style={{cursor:'pointer'}}
-                            onClick={() => {
-                                    // playSong(token,0,song?.uri,song,'play');      
-                                    setSelectedSong(song.track_number,song.album.uri,song)
+                            onClick={() => { 
+                                    setSelectedSong(song.track_number-1,song.album.uri,song)
                                 }}>{song.name}</p>
                         </div>
                     ))
