@@ -82,6 +82,7 @@ const Timestamps = (props) => {
                                             return(
                                                 <div className="column" key={key}>
                                                     <Button
+                                                        style={{backgroundColor:'#282c34', color: '#1DB954', marginBottom:'10px', height: '50px', fontSize:'13px', borderRadius: '10px'}}
                                                         onClick={() => {
                                                             if(!selectedSong) {
                                                                 // setSelectedSong(0,track?.uri,track);

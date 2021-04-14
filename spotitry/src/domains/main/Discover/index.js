@@ -4,11 +4,8 @@ import { connect } from 'react-redux'
 import SearchBar from '../../../components/searchBar'
 import { searchSongsRequested } from '../redux/Actions/UserActions.js'
 import { getPlaybackInfoRequested, playSongRequested, setSelectedSong } from '../redux/Actions/PlaybackActions.js'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Input, InputGroupAddon, InputGroup, Button, Card, CardImg, CardTitle } from 'reactstrap'
-// import { Button } from '@material-ui/core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { Input } from 'reactstrap'
+import { Button } from '@material-ui/core'
 
 
 const Discover = (props) => {
@@ -22,56 +19,46 @@ const Discover = (props) => {
     },[searchValue])
     return(
         <>
-        <div style={{width: '100%', display: 'flex'}}>
-            <div className={styles.container} style={{width: '50%'}}>
+        <div className={styles.row1}>
+            <div >
                 <>
-                    <img src={currentlyPlaying?.album?.images[1].url} className={styles.pic}/>
-                    <p>{currentlyPlaying?.name}</p>
+                    {currentlyPlaying && <img src={currentlyPlaying?.album?.images[1].url} className={styles.pic}/>}
+                    <p className={styles.header}> {currentlyPlaying?.name}</p>
                 </>
-                {/* <SearchBar
-                    setSearchValue={setSearchValue}
-                /> */}
-                    <InputGroup style={{width: '100%'}}>
-                        <InputGroupAddon addonType="append">
-                            <Button>
-                                <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
-                            </Button>
-                        </InputGroupAddon>
-                        <Input placeholder = "Search" onChange={(event) => {
-                            console.log(event.target.value)
-                            var temp = {setSearchValue}
-                            searchSongs(temp)
-                            setSearchValue(event.target.value)
-                        }}></Input>
-                    </InputGroup>
-
-                <br></br>        
-
-                { searchValue &&
-                    searchedSongs.map((song, key) => (
-                        // <div className={styles.container} key={key} >
-                            <Card style={{width:'200px', marginBottom: '10px'}} key={key}>
-                            <CardImg top width="200px" src={song.album.images[0].url} alt="Album Cover" style={{width:'200px',padding:'none'}} className={styles.images}/>
-                            {/* <img src={song.album.images[0].url} className={styles.smallPic}/> */}
-                            <CardTitle
-                            style={{cursor:'pointer'}}
-                            onClick={() => { 
+                <div className={styles.searchBar}>
+                    <SearchBar
+                        setSearchValue={setSearchValue}
+                    />
+                </div>
+                <div className={styles.searchResults}>
+                    { searchValue &&
+                        searchedSongs.map((song, key) => (
+                            <div 
+                                className={styles.row} key={key} 
+                                style={{cursor:'pointer', backgroundColor: 'white', marginBottom:'20px', borderRadius:'20px', width: '375px'}}
+                                onClick={() => { 
                                     setSelectedSong(song.track_number-1,song.album.uri,song)
-                                }}>{song.name}</CardTitle>
-                            </Card>
-                        // </div>
-                    ))
-                }
+                                }}
+                            >
+
+                                <img src={song.album.images[0].url} className={styles.smallPic}/>
+                                <p
+                                style={{cursor:'pointer', marginTop:'10px', marginLeft:'20px'}}>{song.name}</p>
+                            </div>
+                        ))
+                    }
+                </div>
             </div>
-            <div className={styles.container} style={{width: '50%'}}>
-                <Button
-                    style={{height: '75px', width: '150px', margin: "20px"}}
-                    variant='contained' 
-                    className={styles.timestampButton}
-                    onClick={() => getPlaybackInfo(token,1,userId)}
-                    >
-                    Timestamp
-                </Button>
+            <div className={styles.timestamp}>
+            <Button
+                style={{height: '75px', width: '150px', margin: "20px"}}
+                variant='contained' 
+                className={styles.timestampButton}
+                onClick={() => getPlaybackInfo(token,1,userId)}
+                >
+                Timestamp
+            </Button>
+
             </div>
         </div>
         </>

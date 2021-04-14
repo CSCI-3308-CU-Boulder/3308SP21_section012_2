@@ -41,10 +41,18 @@ export function* getPlaybackInfo({ token, createTimestamp, userId}) {
 
 export function* playSong({token, position_ms, songURI, song}){
     try{
-        console.log(position_ms)
-        yield call(axios.put, `${PLAYER_ENDPOINT}/play`,{uris: [songURI], position_ms: position_ms},{headers:{'Authorization': 'Bearer ' + token}})
-        yield put(Actions.playSongSucceeded())
-        yield put(Actions.setPlaybackInfo(song))
+        // console.log(songURI)
+        // if(songURI.includes('artist')){
+        //     console.log('yeet')
+        //     yield call(axios.put, `${PLAYER_ENDPOINT}/play`,{context_uri:songURI, position_ms: position_ms},{headers:{'Authorization': 'Bearer ' + token}})
+        //     yield put(Actions.playSongSucceeded())
+        //     yield put(Actions.setPlaybackInfo(song))
+        // }
+        // else{
+            yield call(axios.put, `${PLAYER_ENDPOINT}/play`,{uris: [songURI], position_ms: position_ms},{headers:{'Authorization': 'Bearer ' + token}})
+            yield put(Actions.playSongSucceeded())
+            yield put(Actions.setPlaybackInfo(song))
+        // }
     }
     catch(error){
         console.log(error)
