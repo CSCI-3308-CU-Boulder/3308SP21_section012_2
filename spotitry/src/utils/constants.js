@@ -16,6 +16,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 export const db = firebase.database();
 export const auth = firebase.auth();
+export const Firebase = firebase;
 
 //Spotify API 
 export const authEndpoint = 'https://accounts.spotify.com/authorize?';

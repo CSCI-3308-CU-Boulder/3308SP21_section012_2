@@ -21,7 +21,7 @@ const UnauthenticatedApp = () => {
               value={false}
               centered
             >
-              <Tab label="Spotitry" />
+              <Tab style={{fontSize: '36px'}}label="Spotitry" />
             </Tabs>
         <header className={styles.AppHeader}>
         
@@ -29,12 +29,12 @@ const UnauthenticatedApp = () => {
         <br></br>
         <Box display="flex" justifyContent="space-between">
           {!accessToken && (
-            <Button style={{height: '75px', width: '150px', margin: "20px"}} className={styles.dumb} variant="contained" href={`${authEndpoint}client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`}>
+            <Button style={{height: '50px', width: '100px', margin: "20px"}} className={styles.dumb} variant="contained" href={`${authEndpoint}client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`}>
               Login
             </Button>
           )}
           {!accessToken && (
-            <Button style={{height: '75px', width: '150px', margin: "20px"}} variant="contained" href={`${signUp}`}>
+            <Button style={{height: '50px', width: '100px', margin: "20px"}} variant="contained" href={`${signUp}`}>
               Sign Up
             </Button>
           )}

@@ -30,11 +30,11 @@ export function getPlaybackInfoFailed(errors){
         errors
     }
 }
-export function playSongRequested(token,deviceId,songURI,song){
+export function playSongRequested(token,position_ms,songURI,song){
     return{
         type: playbackActions.playSongRequested,
         token,
-        deviceId,
+        position_ms,
         songURI,
         song
     }

@@ -6,12 +6,13 @@ const SearchBar = (props) => {
     const { setSearchValue, token } = props
     const [query, setQuery] = useState('')
     return(
-        <TextField
-            value={query}
-            onChange={(event)=>(setSearchValue(event.currentTarget.value),setQuery(event.currentTarget.value))}
-            placeholder={'Search'}
-            className={styles.SearchBar}
-        />
+
+            <TextField
+                value={query}
+                onChange={(event)=>(setSearchValue(event.currentTarget.value),setQuery(event.currentTarget.value))}
+                placeholder={'Search'}
+                className={styles.SearchBar}
+            />
     )
     
 }
