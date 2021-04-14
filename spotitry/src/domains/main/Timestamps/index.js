@@ -54,7 +54,9 @@ const Timestamps = (props) => {
                     }}></Input>
                 </InputGroup>
             </div>
+            
             <div>
+            <Row>
                 {timestampsBySong?.length != 0 && 
                 timestampsBySong?.map((timestamps, key) => {
                     var timestamps = Object.values(timestamps)
@@ -79,7 +81,7 @@ const Timestamps = (props) => {
                                         var timeSet = timestamp.position_ms
                                         var track = song
                                         return(
-                                            <div className="column" key={key}>
+                                            <div className="row" key={key}>
                                                 <Button
                                                     onClick={() => {
                                                         if(!selectedSong) {
@@ -107,7 +109,9 @@ const Timestamps = (props) => {
                     )
                 })}
                 <br></br>
+                </Row>
             </div>
+            
         </div>
 
     )
