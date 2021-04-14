@@ -22,14 +22,14 @@ const Home = (props) => {
                 <Row style={{height: '800px', marginBottom: "20px"}}>
                 {topTracks.slice(0,10)?.map((track,key) => {
                     return(
-                        <Col style={{height: '50%', display: 'flex', marginTop: "10px"}}
+                        <Col style={{height: '50%', display: 'flex', marginTop: "10px", }}
                             onClick={() => {
                                 playSong(token,0,track?.uri,track);      
                             }}
                         >
-                            <Card>
+                            <Card style={{cursor:'pointer', width: '210px'}}>
                                 <CardImg top width="100%" src="" alt="Album Cover" style={{width:'210px'}} src={track.album.images[0].url}/>
-                                <CardHeader>
+                                <CardHeader style={{}}>
                                     <CardTitle tag="h5">{key+1}.  {track.name}</CardTitle>
                                 </CardHeader>
                                 <CardBody>
@@ -48,13 +48,13 @@ const Home = (props) => {
                 </div>
             </div>
             <div>
-                <Row style={{height: '500px', justifyContent: 'center'}}>
+                <Row style={{justifyContent: 'center'}}>
                 {topArtists.slice(0,10)?.map((artist,key) => {
                     return(
-                        <Col style={{height: '50%', display: 'flex', marginTop: '10px'}}>
-                            <Card>
-                                <CardImg top width="100%" alt="Artist Pic" style={{width:'200px', height: '200px'}} src={artist.images[0].url}/>
-                                <CardHeader>
+                        <Col style={{ display: 'flex', margin:'15px'}}>
+                            <Card style={{height:'300px', width:'200px'}}>
+                                <CardImg alt="Artist Pic" style={{width:'200px', height: '200px'}} src={artist.images[0].url}/>
+                                <CardHeader style={{height:'100px'}}>
                                     <CardTitle tag="h5">{key+1}.  {artist.name}</CardTitle>
                                 </CardHeader>
                             </Card>

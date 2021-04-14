@@ -8,6 +8,11 @@ const InitialState =
     },
     availableDevices:{},
     recentlyPlayed: [],
+    selectedSong: {
+        position_ms:0,
+        songURI:'',
+        song:'',
+    },
     loading:false,
     errors:{},
 }
@@ -58,6 +63,17 @@ export default function(state = InitialState, action){
             return{
                 ...state,
                 errors:errors
+            }
+        }
+        case playbackActions.setSelectedSong: {
+            const {position_ms, song, songURI} = action
+            return {
+                ...state,
+                selectedSong:{
+                    position_ms:position_ms,
+                    songURI:songURI,
+                    song:song
+                }
             }
         }
         default : {

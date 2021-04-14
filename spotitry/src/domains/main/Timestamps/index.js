@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react'
 import styles from '../Timestamps/index.module.css'
 import { connect } from 'react-redux'
 import { getProfileRequested } from '../redux/Actions/UserActions'
-import { playSongRequested } from '../redux/Actions/PlaybackActions'
+import { playSongRequested, setSelectedSong } from '../redux/Actions/PlaybackActions'
 import { InputGroup, InputGroupAddon, Input, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button} from 'reactstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import { getTimestamps } from '../../../firebase'
+
 
 const Timestamps = (props) => {
-    const {token, timestamps, refetchUser,playSong} = props
+    const {token, timestamps, refetchUser,playSong, setSelectedSong} = props
     const [timestampsBySong,setTimeStampsBySong] = useState([])
     const [searchValue, setSearchValue] = useState('')
     const [allTimeStampsBySong,setAllTimeStampsBySong] = useState('')
@@ -67,7 +67,7 @@ const Timestamps = (props) => {
                     var albumCover = album?.images[0]?.url
                     return(
                         <div className={styles.container} key={key}>
-                            <Card>
+                            <Card style={{width:'200px'}}>
                                 <CardImg top width="100%" src={albumCover} alt="Album Cover" style={{width:'200px',padding:'none'}} className={styles.image}/>
                                 <CardBody>
                                     <CardTitle tag="h5">{songName}</CardTitle>
@@ -78,11 +78,14 @@ const Timestamps = (props) => {
                                         var totalTime = song.duration_ms
                                         var timeSet = timestamp.position_ms
                                         var track = song
-                                        // console.log(timeSet)
                                         return(
                                             <div className="column" key={key}>
                                                 <Button
-                                                    onClick={() => {console.log(timeSet);playSong(token,timeSet,track?.uri,track)}}
+                                                    onClick={() => {
+                                                        console.log(timeSet)
+                                                        // setSelectedSong(timeSet,track?.uri,track)
+                                                        playSong(token,timeSet,track?.uri,track)
+                                                    }}
                                                 >
                                                     Timestamp #{key+1} {millisToMinutesAndSeconds(timeSet)} of {millisToMinutesAndSeconds(totalTime)}
                                                 </Button>
@@ -107,7 +110,8 @@ const Timestamps = (props) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         playSong: (token, deviceId, songURI, song) => dispatch(playSongRequested(token, deviceId, songURI,song)),
-        refetchUser: (token) => dispatch(getProfileRequested(token))
+        refetchUser: (token) => dispatch(getProfileRequested(token)),
+        setSelectedSong: (token, songURI, song) => dispatch(setSelectedSong(token, songURI, song))
     }
 }
 const mapStateToProps = (state) => {
