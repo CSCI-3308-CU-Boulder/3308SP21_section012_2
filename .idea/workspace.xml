@@ -21,9 +21,24 @@
   <component name="ChangeListManager">
     <list default="true" id="b93bf3a1-21d3-4f75-b808-5660dea71b43" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.yarn-integrity" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.yarn-integrity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spotitry/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/spotitry/src/App.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mocha-testing/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mocha-testing/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mocha-testing/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mocha-testing/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mocha-testing/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mocha-testing/public/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mocha-testing/public/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mocha-testing/public/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mocha-testing/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mocha-testing/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mocha-testing/src/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mocha-testing/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mocha-testing/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mocha-testing/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mocha-testing/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mocha-testing/src/reportWebVitals.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mocha-testing/src/setupTests.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mocha-testing/yarn.lock" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +73,7 @@
       <workItem from="1617732850526" duration="183000" />
       <workItem from="1618018744610" duration="201000" />
       <workItem from="1618776643897" duration="1635000" />
-      <workItem from="1618874296668" duration="2037000" />
+      <workItem from="1618874296668" duration="2431000" />
     </task>
     <servers />
   </component>
