@@ -1,6 +1,4 @@
-// import {firebaseConfig}from './utils/constants'
-// import firebase from 'firebase/app'
-// import "firebase/auth";
+
 import { auth, db } from './utils/constants'
 
 export async function createAndFetchUser(userId,name,email){

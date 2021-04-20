@@ -16,11 +16,9 @@ const App = (props) => {
     )
   }
   if(domain != '/'){
-    history.push('/')
+    history.push('/') 
   }
-
   return <UnauthenticatedApp/>
-
 }
 export default (App);
 

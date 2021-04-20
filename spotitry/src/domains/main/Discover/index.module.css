@@ -1,8 +1,8 @@
 .header {
-    margin-top: -35px;
     font-size: 18px;
-    margin-left: 50px;
-    align-self: flex-start;
+    position: absolute;
+    top: 370px;
+    left:125px
 }
 .pic{
     width: 375px;

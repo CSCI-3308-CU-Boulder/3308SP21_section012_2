@@ -14,6 +14,8 @@ const UnauthenticatedApp = () => {
         });
       }
     },[hash.access_token])
+    const redirectUri = `${window.location.href}home`
+    console.log(redirectUri)
     return (
       <div className={styles.App}>
             <Tabs

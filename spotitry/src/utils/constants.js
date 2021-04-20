@@ -23,7 +23,7 @@ export const authEndpoint = 'https://accounts.spotify.com/authorize?';
 export const signUp = 'https://www.spotify.com/signup/'
 export const spotifyLogo = 'https://1000logos.net/wp-content/uploads/2017/08/Spotify-Logo.png'
 export const clientId = "4604d772bd3e4fe69399830809371aa4";
-export const redirectUri =`${window.location.href}home`
+export const redirectUri = `${window.location.href}home`
 export const scopes = [
     "user-read-currently-playing",
     "user-read-playback-state",
@@ -47,7 +47,6 @@ export const TOP_ARTISTS_ENDPOINT = 'https://api.spotify.com/v1/me/top/artists'
 export const TOP_TRACKS_ENDPOINT = 'https://api.spotify.com/v1/me/top/tracks'
 export const SEARCH_ENDPOINT = 'https://api.spotify.com/v1/search'
 export const PLAYER_ENDPOINT = 'https://api.spotify.com/v1/me/player'
-// export const HISTORY_ENDPOINT = 'https://api.spotify.com/v1/me/'
 
 // Get the hash of the url
 export const hash = window.location.hash
