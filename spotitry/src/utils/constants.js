@@ -23,7 +23,7 @@ export const authEndpoint = 'https://accounts.spotify.com/authorize?';
 export const signUp = 'https://www.spotify.com/signup/'
 export const spotifyLogo = 'https://1000logos.net/wp-content/uploads/2017/08/Spotify-Logo.png'
 export const clientId = "4604d772bd3e4fe69399830809371aa4";
-export const redirectUri ="http://localhost:3000/home"
+export const redirectUri =`${window.location.href}home`
 export const scopes = [
     "user-read-currently-playing",
     "user-read-playback-state",
