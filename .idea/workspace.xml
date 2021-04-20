@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b93bf3a1-21d3-4f75-b808-5660dea71b43" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Team_Meeting_Logs/MeetingLogs" beforeDir="false" afterPath="$PROJECT_DIR$/Team_Meeting_Logs/MeetingLogs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.yarn-integrity" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.yarn-integrity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spotitry/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/spotitry/src/App.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,16 +57,38 @@
       <workItem from="1617732439838" duration="250000" />
       <workItem from="1617732850526" duration="183000" />
       <workItem from="1618018744610" duration="201000" />
+      <workItem from="1618776643897" duration="1635000" />
+      <workItem from="1618874296668" duration="2037000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="631" y="380" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1618776795503">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state x="631" y="380" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1792.1097@0.23.1792.1097" timestamp="1618776795503" />
     <state x="1009" y="23" width="783" height="1078" key="dock-window-1" timestamp="1617481675778">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
     <state x="1009" y="23" width="783" height="1078" key="dock-window-1/0.23.1792.1097@0.23.1792.1097" timestamp="1617481675778" />
+    <state x="2494" y="258" width="670" height="676" key="search.everywhere.popup" timestamp="1618876317213">
+      <screen x="1792" y="23" width="1920" height="1057" />
+    </state>
+    <state x="2494" y="258" width="670" height="676" key="search.everywhere.popup/1792.23.1920.1057/0.23.1792.1097@1792.23.1920.1057" timestamp="1618876317213" />
   </component>
 </project>
